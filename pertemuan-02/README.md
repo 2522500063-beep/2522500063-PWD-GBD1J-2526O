@@ -1,6 +1,6 @@
 # pertemuan-02
-NIM : 22522500063
-Nama : Anjelita cahaya
+NIM : 22522500063<br>   
+Nama : Anjelita cahaya<br>
 
-Hari ini, KAmis 02-Okt-2025 kami belajar:
+Hari ini, Kamis 02-Okt-2025 kami belajar:<br>
 1) 
