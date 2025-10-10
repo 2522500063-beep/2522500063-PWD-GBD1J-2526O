@@ -20,5 +20,6 @@ Hari ini, Rabu 09 Oktober 2025, saya belajar:
   <li>mengatur efek tanda pengguna</li>
   <li>mengatur gaya tombol</li>
   <li>membuat efek interaktif</li>
+  <li>mengatur warna berbeda untuk tombol</li>
 </ol>
 
