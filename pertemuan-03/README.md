@@ -17,5 +17,6 @@ Hari ini, Rabu 09 Oktober 2025, saya belajar:
   <li>mengatur elemen dalam form</li>
   <li>membuat teks label jelas dan rapi</li>
   <li>mengatur tampilan kolom input dan textarea</li>
+  <li>mengatur efek tanda pengguna</li>
 </ol>
 
