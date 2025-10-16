@@ -71,8 +71,13 @@
 
       #contact form {
         display: flex;
-        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin: 0;
+        padding: 6px 0;
+        border-bottom: 1px solid #e6e6e6;
       }
+
 
       #contact label {
         margin-top: 10px;
@@ -122,6 +127,16 @@
 
       #contact button[type="reset"]:hover {
         background-color: #80b3ff;
+      }
+
+      #about p, 
+      #contact from {
+        display: flex;
+        justify-content: flex-start;
+        align-items: baseline;
+        margin: 0;
+        padding: 6px 0;
+        border-bottom: 1px solid #e6e6e6;
       }
 
     </style>
