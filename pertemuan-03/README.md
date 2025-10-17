@@ -18,7 +18,7 @@ Hari ini, Rabu 09 Oktober 2025, saya belajar:
   <li>membuat teks label jelas dan rapi</li>
   <li>mengatur tampilan kolom input dan textarea</li>
   <li>mengatur efek tanda pengguna</li>
-  <li>mengatur gaya tombol</li>
+  <li>section#contact styling tombol</li>
   <li>membuat efek interaktif</li>
   <li>mengatur warna berbeda untuk tombol</li>
   <li>membuat efek warna tombol batal</li>
