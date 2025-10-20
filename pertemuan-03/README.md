@@ -15,6 +15,7 @@ Hari ini, Rabu 09 Oktober 2025, saya belajar:
   <li>membuat struktur form biru muda untuk section contact</li>
   <li>mengatur tampilan judul kontak saya</li>
   <li>mengatur elemen dalam from</li>
+  <li>input dan nilai sejajar</li>
   <li>membuat teks label jelas dan rapi</li>
   <li>mengatur tampilan kolom input dan textarea</li>
   <li>mengatur efek tanda pengguna</li>
