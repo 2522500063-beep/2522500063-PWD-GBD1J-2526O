@@ -17,7 +17,7 @@ Hari ini, Rabu 09 Oktober 2025, saya belajar:
   <li>section#contact upgrade struktur from</li>
   <li>section#contact styling label</li>
   <li>section#contact styling label>span</li>
-  <li>mengatur tampilan kolom input dan textarea</li>
+  <li>section#contact styling input dan textarea</li>
   <li>mengatur efek tanda pengguna</li>
   <li>section#contact styling tombol</li>
   <li>membuat efek interaktif</li>
