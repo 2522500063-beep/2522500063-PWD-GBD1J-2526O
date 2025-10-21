@@ -19,7 +19,7 @@ Hari ini, Rabu 09 Oktober 2025, saya belajar:
   <li>section#contact styling label>span</li>
   <li>section#contact styling input dan textarea</li>
   <li>section#contact styling tombol</li>
-  <li>section#contact styling tombol</li>
+  <li>section#contact styling warna tombol</li>
   <li>membuat efek interaktif</li>
   <li>mengatur warna berbeda untuk tombol</li>
   <li>membuat efek warna tombol batal</li>
