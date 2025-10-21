@@ -12,7 +12,7 @@ Hari ini, Rabu 09 Oktober 2025, saya belajar:
   <li>membuat styling untuk selector ID #about elemen p</li>
   <li>membuat styling untuk selector ID #about elemen strong</li>
   <li>membuat styling untuk selector ID #about elemen mode responsif (mobile)</li>
-  <li>membuat struktur form biru muda untuk section contact</li>
+  <li>section#contact groups selector</li>
   <li>mengatur tampilan judul kontak saya</li>
   <li>mengatur elemen dalam from</li>
   <li>input dan nilai sejajar</li>
