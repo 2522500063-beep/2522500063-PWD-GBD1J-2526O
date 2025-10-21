@@ -16,7 +16,7 @@ Hari ini, Rabu 09 Oktober 2025, saya belajar:
   <li>section#contact groups selector h2</li>
   <li>section#contact upgrade struktur from</li>
   <li>section#contact styling label</li>
-  <li>membuat teks label jelas dan rapi</li>
+  <li>section#contact styling label>span</li>
   <li>mengatur tampilan kolom input dan textarea</li>
   <li>mengatur efek tanda pengguna</li>
   <li>section#contact styling tombol</li>
