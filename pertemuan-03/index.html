@@ -24,7 +24,6 @@
         margin-bottom: 16px;
       }
       
-      @media (max-width: 600px) {
       #about p, 
       #contact label {
         display: flex;
@@ -56,7 +55,6 @@
         margin: 0;
         box-sizing: border-box;
       }
-    }
 
       #contact button {
         margin-top: 10px;
@@ -91,6 +89,21 @@
       #contact button[type="reset"]:hover {
         background-color: #cccccc;
         transform: translateY(-1px);
+      }
+
+      @media (max-width: 600px) {
+        #about p, 
+        #contact label {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        #about strong, 
+        #contact label>span {
+          text-align: left;
+          padding-right: 0;
+          margin-bottom: 2px;
+        }
       }
 
 
