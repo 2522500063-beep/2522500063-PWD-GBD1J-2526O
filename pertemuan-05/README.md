@@ -12,5 +12,6 @@ Hari ini, KAmis 23 Oktober 2025, saya mempelajari:
     <li>styling nav mobile</li>
     <li>styling nav menu mobile</li>
     <li>tambah file script.js</li>
+    <li>membuat script.js</li>
 
 </ol>
