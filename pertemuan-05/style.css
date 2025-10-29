@@ -259,3 +259,12 @@
           width: 100%;
         }
       }
+
+      .menu .menu-toggle {
+        position: relative;
+        z-index: 1001;
+      }
+
+      nav {
+        z-index: 1000;
+      }
