@@ -20,6 +20,10 @@ document.querySelector("form").addEventListener("submit", function (e) {
     }
 });
 
+document.getElementById("menuToggle").addEventListener("click", function () {
+    document.querySelector("nav").classList.toggle("active");
+});
+
 document.querySelector("form").addEventListener("submit", function (e) {
     const nama = document.getElementById("txtNama");
     const email = document.getElementById("txtEmail");
@@ -61,6 +65,7 @@ document.querySelector("form").addEventListener("submit", function (e) {
 function showError(inputElement, message) {
     const label = inputElement.closest("label");
     if (!label) return;
+
     label.style.flexWrap = "wrap";
 
     const small = document.createElement("small");
@@ -73,14 +78,18 @@ function showError(inputElement, message) {
     small.style.marginTop = "4px";
     small.style.flexBasis = "100%";
     small.dataset.forId = inputElement.id;
+
     if (inputElement.nextSibling) {
         label.insertBefore(small, inputElement.nextSibling);
     } else {
         label.appendChild(small);
     }
+
     inputElement.style.border = "1px solid red";
+
     alignErrorMessage(small, inputElement);
 }
+
 function alignErrorMessage(smallEl, inputEl) {
     const isMobile = window.matchMedia("(max-width: 600px)").matches;
     if (isMobile) {
@@ -88,34 +97,23 @@ function alignErrorMessage(smallEl, inputEl) {
         smallEl.style.width = "100%";
         return;
     }
+
     const label = inputEl.closest("label");
     if (!label) return;
+
     const rectLabel = label.getBoundingClientRect();
     const rectInput = inputEl.getBoundingClientRect();
     const offsetLeft = Math.max(0, Math.round(rectInput.left - rectLabel.left));
-    
+
     smallEl.style.marginLeft = offsetLeft + "px";
     smallEl.style.width = Math.round(rectInput.width) + "px";
 }
+
 window.addEventListener("resize", () => {
     document.querySelectorAll(".error-msg").forEach(small => {
         const target = document.getElementById(small.dataset.forId);
         if (target) alignErrorMessage(small, target);
     });
-});
-
-document.getElementById("menuToggle").addEventListener("click", function () {
-    document.querySelector("nav").classList.toggle("active");
-});
-
-document.getElementById("menuToggle").addEventListener("click", function () {
-    const nav = document.querySelector("nav");
-    nav.classList.toggle("active");
-    if (nav.classList.contains("active")) {
-        this.textContent = "\u2716";
-    } else {
-        this.textContent = "\u2630";
-    }
 });
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -127,11 +125,13 @@ document.addEventListener("DOMContentLoaded", function () {
     function setupCharCountLayout() {
         const label = document.querySelector('label[for="txtPesan"]');
         if (!label) return;
+
         let wrapper = label.querySelector('[data-wrapper="pesan-wrapper"]');
         const span = label.querySelector('span');
         const textarea = document.getElementById('txtPesan');
         const counter = document.getElementById('charCount');
         if (!span || !textarea || !counter) return;
+
         if (!wrapper) {
             wrapper = document.createElement('div');
             wrapper.dataset.wrapper = 'pesan-wrapper';
@@ -139,15 +139,18 @@ document.addEventListener("DOMContentLoaded", function () {
             wrapper.style.flex = '1';
             wrapper.style.display = 'flex';
             wrapper.style.flexDirection = 'column';
+
             label.insertBefore(wrapper, textarea);
             wrapper.appendChild(textarea);
             wrapper.appendChild(counter);
+
             textarea.style.width = '100%';
             textarea.style.boxSizing = 'border-box';
             counter.style.color = '#555';
             counter.style.fontSize = '14px';
             counter.style.marginTop = '4px';
         }
+
         applyResponsiveLayout();
     }
 
@@ -157,17 +160,20 @@ document.addEventListener("DOMContentLoaded", function () {
         const wrapper = label?.querySelector('[data-wrapper="pesan-wrapper"]');
         const counter = document.getElementById('charCount');
         if (!label || !span || !wrapper || !counter) return;
+
         const isMobile = window.matchMedia('(max-width: 600px)').matches;
         if (isMobile) {
             label.style.display = 'flex';
             label.style.flexDirection = 'column';
             label.style.alignItems = 'flex-start';
             label.style.width = '100%';
+
             span.style.minWidth = 'auto';
             span.style.textAlign = 'left';
             span.style.paddingRight = '0';
             span.style.flexShrink = '0';
             span.style.marginBottom = '4px';
+
             wrapper.style.flex = '1';
             wrapper.style.display = 'flex';
             wrapper.style.flexDirection = 'column';
@@ -178,11 +184,13 @@ document.addEventListener("DOMContentLoaded", function () {
             label.style.flexDirection = 'row';
             label.style.alignItems = 'baseline';
             label.style.width = '100%';
+
             span.style.minWidth = '180px';
             span.style.textAlign = 'right';
             span.style.paddingRight = '16px';
             span.style.flexShrink = '0';
             span.style.marginBottom = '0';
+
             wrapper.style.flex = '1';
             wrapper.style.display = 'flex';
             wrapper.style.flexDirection = 'column';
@@ -191,6 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
     setupCharCountLayout();
+
     window.addEventListener('resize', applyResponsiveLayout);
 });
 
@@ -198,6 +207,8 @@ document.getElementById("txtPesan").addEventListener("input", function () {
     const panjang = this.value.length;
     document.getElementById("charCount").textContent = panjang + "/200 karakter";
 });
+
+
 
 
 
