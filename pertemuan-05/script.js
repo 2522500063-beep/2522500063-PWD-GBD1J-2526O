@@ -4,6 +4,7 @@ document.getElementById("menuToggle").addEventListener("click", function () {
 
     if (nav.classList.contains("active")) {
         this.textContent = "\u2716";
+    } else {
         this.textContent = "\u2630";
     }
 });
