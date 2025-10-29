@@ -62,9 +62,11 @@ function showError(inputElement, message) {
     const label = inputElement.closest("label");
     if (!label) return;
     label.style.flexWrap = "wrap";
+
     const small = document.createElement("small");
     small.className = "error-msg";
     small.textContent = message;
+
     small.style.color = "red";
     small.style.fontSize = "14px";
     small.style.display = "block";
@@ -91,6 +93,7 @@ function alignErrorMessage(smallEl, inputEl) {
     const rectLabel = label.getBoundingClientRect();
     const rectInput = inputEl.getBoundingClientRect();
     const offsetLeft = Math.max(0, Math.round(rectInput.left - rectLabel.left));
+    
     smallEl.style.marginLeft = offsetLeft + "px";
     smallEl.style.width = Math.round(rectInput.width) + "px";
 }
