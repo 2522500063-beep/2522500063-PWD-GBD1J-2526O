@@ -16,7 +16,7 @@ document.querySelector("form").addEventListener("submit", function (e) {
         alert("Semua kolom wajib diisi!");
         e.preventDefault();
     } else {
-        alert("Terima kasih, " + Anjelita + "! Pesan Anda telah dikirim.");
+        alert("Terima kasih, " + nama + "! Pesan Anda telah dikirim.");
     }
 });
 
