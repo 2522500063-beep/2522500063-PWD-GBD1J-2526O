@@ -1,1 +1,3 @@
-<?php echo "hai cewe"?>
+<?php 
+    echo "hai cewe";
+?>
