@@ -89,6 +89,7 @@ foreach ($matkulData as $i => &$matkul) {
     $totalBobot += $matkul['bobot'];
     $totalSks += $matkul['sks'];
 
+
    
     ${"namaMatkul$i"} = $matkul['nama'];
     ${"sksMatkul$i"} = $matkul['sks'];
@@ -180,7 +181,7 @@ $namaadik = "-";
         <h2>Rekapitulasi IPK</h2>
         <p><strong>Total SKS:</strong> <?php echo $totalSks; ?></p>
         <p><strong>Total Bobot:</strong> <?php echo number_format($totalBobot, 2, ',', ''); ?></p>
-        <p><strong>Indeks Prestasi Kumulatif (IPK):</strong> **<?php echo number_format($ipk, 2, ',', ''); ?></p>
+        <p><strong>Indeks Prestasi Kumulatif (IPK):</strong> <?php echo number_format($ipk, 2, ',', ''); ?></p>
         
     </section>
     
