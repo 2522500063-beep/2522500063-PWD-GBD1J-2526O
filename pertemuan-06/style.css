@@ -33,7 +33,8 @@
 
       #home, 
       #about, 
-      #contact {
+      #contact,
+      #ipk {
         background-color: #ffffff;
         border-radius: 10px;
         padding: 20px;
@@ -44,7 +45,8 @@
 
       #home h2, 
       #about h2, 
-      #contact h2 {
+      #contact h2,
+      #ipk h2 {
         color: #003366;
         border-bottom: 2px solid #003366;
         padding-bottom: 6px;
@@ -239,13 +241,15 @@
 
       @media (max-width: 600px) {
         #about p, 
-        #contact label {
+        #contact label,
+        #ipk p {
           flex-direction: column;
           align-items: flex-start;
         }
 
         #about strong, 
-        #contact label>span {
+        #contact label>span,
+        #ipk strong {
           text-align: left;
           padding-right: 0;
           margin-bottom: 2px;
@@ -259,3 +263,36 @@
           width: 100%;
         }
       }
+
+       #ipk p {
+        display: flex;
+        justify-content: flex-start; 
+      }
+
+
+      
+       #ipk strong {
+        min-width: 150px;
+        color: #003366;
+        font-weight: 600;
+        text-align: left;
+        padding-right: 16px;
+        flex-shrink: 0;
+      }
+
+      
+      #judul {
+        color: #003366;
+        border-bottom: 2px solid #003366;
+        padding-bottom: 6px;
+        margin-top: 0;
+        margin-bottom: 16px;
+      }
+
+        
+
+      
+
+    
+
+
