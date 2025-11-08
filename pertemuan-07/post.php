@@ -1,9 +1,17 @@
 <?php 
 session_start();
-$_SESSION["nama"] = $_POST["txtNama"];
-$_SESSION["email"] = $_POST["txtEmail"];
-$_SESSION["pesan"] = $_POST["txtPesan"];
-header( "Location: post.php");
+$sesname = "";
+if (isset($_SESSION["nama"])):
+    $sesname =  $_SESSION["nama"];
+endif;
+$sesemail = "";
+if (isset($_SESSION["email"])):
+    $sesemail =  $_SESSION["email"];
+endif;
+$sespesan = "";
+if (isset($_SESSION["pesan"])):
+    $sespesan = $_SESSION["pesan"];
+endif;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -89,11 +97,13 @@ header( "Location: post.php");
         <button type="submit">Kirim</button>
         <button type="reset">Batal</button>
       </form>
+      <?php if (empty($sesname)): ?>
       <p>Terimakasih sudah menghubungi kami:
         <label>Nama: <strong><?php echo $sesname; ?></strong></label>
         <label>Email: <strong><?php echo $sesemail; ?></strong></label>
         <label>Pesan: <strong><?php echo $sespesan; ?></strong></label>
       </p>
+      <?php endif; ?>
     </section>
   </main>
 
