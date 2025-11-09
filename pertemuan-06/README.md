@@ -17,4 +17,5 @@ belajar sebagai berikut:
     <li>buat kondisi kehadiran di bawah 70, grade = E</li>
     <li>buat kondisi status berdasarkan grade</li>
     <li>hitung bobot</li>
+    <li>hitung total bobot dan total sks</li>
 </ol>
