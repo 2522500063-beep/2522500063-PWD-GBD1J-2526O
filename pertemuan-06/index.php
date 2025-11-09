@@ -203,7 +203,7 @@
 
     #IPK = totalBobot / totalSKS
 
-    $IPK = "";
+    $IPK = $totalBobot / $totalSKS;
         
         
         ?>

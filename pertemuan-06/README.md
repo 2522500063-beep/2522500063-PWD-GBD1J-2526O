@@ -18,4 +18,5 @@ belajar sebagai berikut:
     <li>buat kondisi status berdasarkan grade</li>
     <li>hitung bobot</li>
     <li>hitung total bobot dan total sks</li>
+    <li>hitung ipk</li>
 </ol>
