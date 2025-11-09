@@ -56,153 +56,155 @@
     </section>
     <section id="ipk">
         <?php
-        $namaMatkul1 = "Algoritma dan Struktur Data";
-        $sksMatkul1 = "4";
-        $nilaiHadir1 = "90";
-        $nilaiTugas1 = "60";
-        $nilaiUts1 = "80";
-        $nilaiUas1 = "70";
-        $nilaiAkhir1 = "73";
-        $grade1 = "";
-        $mutu1 = "";
-        $bobot1 = "";
-        $status1 = "";
-          
-        $nilaiAkhir = (0.2*$nilaiHadir1)+(0.2*$nilaiTugas1)+(0.3*$nilaiUts1)+(0.4*$nilaiUas1);
+        $namaMatkul1 = "";
+    $namaMatkul2 = "";
+    $namaMatkul3 = "";
+    $namaMatkul4 = "";
+    $namaMatkul5 = "";
+    $sksMatkul1 = "";
+    $sksMatkul2 = "";
+    $sksMatkul3 = "";
+    $sksMatkul4 = "";
+    $sksMatkul5 = "";
+    $nilaiHadir1 = "";
+    $nilaiHadir2 = ""; 
+    $nilaiHadir3 = "";
+    $nilaiHadir4 = "";
+    $nilaiHadir5 = "";
+    $nilaiTugas1 = "";
+    $nilaiTugas2 = "";
+    $nilaiTugas3 = "";
+    $nilaiTugas4 = "";
+    $nilaiTugas5 = "";
+    $nilaiUTS1 = "";
+    $nilaiUTS2 = ""; 
+    $nilaiUTS3 = "";
+    $nilaiUTS4 = ""; 
+    $nilaiUTS5 = "";
+    $nilaiUAS1 = "";
+    $nilaiUAS2 = ""; 
+    $nilaiUAS3 = ""; 
+    $nilaiUAS4 = ""; 
+    $nilaiUAS5 = "";
+    #Nilai Akhir = (0.1 * nilaiHadir) + (0.2 * nilaiTugas) + (0.3 * nilaiUTS) + (0.4 * nilaiUAS)
+    $nilaiAkhir1 = "(0.1 * $nilaiHadir1) + (0.2 * $nilaiTugas1) + (0.3 * $nilaiUTS1) + (0.4 * $nilaiUAS1)"; 
+    $nilaiAkhir2 = "(0.1 *  $nilaiHadir2) + (0.2 * $nilaiTugas2) + (0.3 * $nilaiUTS2) + (0.4 * $nilaiUAS2)";
+    $nilaiAkhir3 = "(0.1 *  $nilaiHadir3) + (0.2 * $nilaiTugas3) + (0.3 * $nilaiUTS3) + (0.4 * $nilaiUAS3)"; 
+    $nilaiAkhir4 = "(0.1 *  $nilaiHadir4) + (0.2 * $nilaiTugas4) + (0.3 * $nilaiUTS4) + (0.4 * $nilaiUAS4)";
+    $nilaiAkhir5 = "(0.1 *  $nilaiHadir5) + (0.2 * $nilaiTugas5) + (0.3 * $nilaiUTS5) + (0.4 * $nilaiUAS5)";
+    $grade1 = "";
+    $grade2 = "";
+    $grade3 = "";
+    $grade4 = "";
+    $grade5 = "";
+    #Nilai kehadiran < 70, otomatis Grade = E.
+    if ($nilaiHadir1 < 70):
+        $grade1 = "E";
+    endif;
+    if ($nilaiHadir2 < 70):
+        $grade2 = "E";
+    endif;
+    if ($nilaiHadir3 < 70):
+        $grade3 = "E";
+    endif;
+    if ($nilaiHadir4 < 70):
+        $grade4 = "E";
+    endif;
+    if ($nilaiHadir5 < 70):
+        $grade5 = "E";
+    endif;
+    $mutu1 = "";
+    $mutu2 = ""; 
+    $mutu3 = "";
+    $mutu4 = "";
+    $mutu5 = "";
+    #Bobot = angkaMutu * sksMatkul
+    $bobot1 = "Bobot = $mutu1 * $sksMatkul1"; 
+    $bobot2 = "Bobot = $mutu2 * $sksMatkul2";
+    $bobot3 = "Bobot = $mutu3 * $sksMatkul3"; 
+    $bobot4 = "Bobot = $mutu4 * $sksMatkul4";
+    $bobot5 = "Bobot = $mutu5 * $sksMatkul5";
+    /*
+    Grade A, A-, B+, B, B-, C+, C, C- maka Status: LULUS
+    Grade D, E maka Status: GAGAL
+    */
+    switch ($grade1):
+    case "A": = $status1 = "LULUS"; break;
+    case "A-": = $status1 = "LULUS"; break;
+    case "B+": = $status1 = "LULUS"; break;
+    case "B": = $status1 = "LULUS"; break;
+    case "B-": = $status1 = "LULUS"; break;
+    case "C+": = $status1 = "LULUS"; break;
+    case "C": = $status1 = "LULUS"; break;
+    case "C-": = $status1 = "LULUS"; break;
+    case "D":
+    case "E":
+        $status1 = "GAGAL"; 
+        break;  
+    endswitch;
+     switch ($grade2):
+    case "A": = $status2 = "LULUS"; break;
+    case "A-": = $status2 = "LULUS"; break;
+    case "B+": = $status2 = "LULUS"; break;
+    case "B": = $status2 = "LULUS"; break;
+    case "B-": = $status2 = "LULUS"; break;
+    case "C+": = $status2 = "LULUS"; break;
+    case "C": = $status2 = "LULUS"; break;
+    case "C-": = $status2 = "LULUS"; break;
+    case "D":
+    case "E":
+        $status2 = "GAGAL"; 
+        break;
+    endswitch;
+    switch ($grade3):
+    case "A": = $status3 = "LULUS"; break;
+    case "A-": = $status3 = "LULUS"; break;
+    case "B+": = $status3 = "LULUS"; break;
+    case "B": = $status3 = "LULUS"; break;
+    case "B-": = $status3 = "LULUS"; break;
+    case "C+": = $status3 = "LULUS"; break;
+    case "C": = $status3 = "LULUS"; break;
+    case "C-": = $status3 = "LULUS"; break;
+    case "D":
+    case "E":
+        $status3 = "GAGAL"; 
+        break;
+    endswitch;
+    switch ($grade4):
+    case "A": = $status4 = "LULUS"; break;
+    case "A-": = $status4 = "LULUS"; break;
+    case "B+": = $status4 = "LULUS"; break;
+    case "B": = $status4 = "LULUS"; break;
+    case "B-": = $status4 = "LULUS"; break;
+    case "C+": = $status4 = "LULUS"; break;
+    case "C": = $status4 = "LULUS"; break;
+    case "C-": = $status4 = "LULUS"; break;
+    case "D":
+    case "E":
+        $status4 = "GAGAL"; 
+        break;
+    endswitch;
+    switch ($grade5):
+    case "A": = $status5 = "LULUS"; break;
+    case "A-": = $status5 = "LULUS"; break;
+    case "B+": = $status5 = "LULUS"; break;
+    case "B": = $status5 = "LULUS"; break;
+    case "B-": = $status5 = "LULUS"; break;
+    case "C+": = $status5 = "LULUS"; break;
+    case "C": = $status5 = "LULUS"; break;
+    case "C-": = $status5 = "LULUS"; break;
+    case "D":
+    case "E":
+        $status5 = "GAGAL"; 
+        break;
+    endswitch; 
+    $totalBobot = "";
+    $totalSKS = "";
+    $IPK = "";
         
-
-         {
-        if($nilaiAkhir >= 81) {$grade1 = "A-"; $mutu1 = "3,70";
-        } elseif ($nilaiAkhir >= 76) {$grade1 = "B+"; $mutu1 = "3,30";
-        } elseif ($nilaiAkhir >= 71) {$grade1 = "B"; $mutu1 = "3,00";
-        } elseif ($nilaiAkhir >= 66) {$grade1 = "B-"; $mutu1 = "2,70";
-        } else {$grade = "C"; $mutu1 = "2,00";}
-        }
-
-        
-        $bobot1 = $mutu1*$sksMatkul1;
-
-        if ($grade1 == 'A-' || $grade1 == 'C' || $grade1 == 'E') {$status1 = "lulus";
-        } else {
-            $status1 = "tidak lulus";
-        }
-        $namaMatkul2 = "Agama";
-        $sksMatkul2 = "2";
-        $nilaiHadir2 = "70";
-        $nilaiTugas2 = "50";
-        $nilaiUts2 = "60";
-        $nilaiUas2 = "80";
-        $nilaiAkhir2 = "67";
-        $grade2 = "";
-        $mutu2 = "";
-        $bobot2 = "";
-        $status2 = "";
-
-        $nilaiAkhir = (0.2*$nilaiHadir2)+(0.2*$nilaiTugas2)+(0.3*$nilaiUts2)+(0.4*$nilaiUas2);
-
-        if($nilaiAkhir >= 76) {$grade2 = "B+"; $mutu2 = "3,30";
-        } elseif ($nilaiAkhir >= 71) {$grade2 = "B+"; $mutu2 = "3,00";
-        } elseif ($nilaiAkhir >= 66) {$grade2 = "B-"; $mutu2 = "2,70";
-        } elseif ($nilaiAkhir >= 61) {$grade2 = "C+"; $mutu2 = "2,30";
-        } else {$grade = "C"; $mutu2 = "2,00";}
-
-        $bobot2 = $mutu2*$sksMatkul2;
-
-        if ($grade2 == 'B+' || $grade2 == 'C' || $grade2 == 'E') {$status2 = "lulus";
-        } else {
-            $status2 =  "tidak lulus";
-        }
-
-       
-        
-       
-        $namaMatkul3 = "Basis Data";
-        $sksMatkul3 = "3";
-        $nilaiHadir3 = "85";
-        $nilaiTugas3 = "78";
-        $nilaiUts3 = "70";
-        $nilaiUas3 = "82";
-        $nilaiAkhir3 = "78";
-        $grade3 = "";
-        $mutu3 = "";
-        $bobot3 = "";
-        $status3 = "";
-
-         $nilaiAkhir = (0.2*$nilaiHadir3)+(0.2*$nilaiTugas3)+(0.3*$nilaiUts3)+(0.4*$nilaiUas3);
-
-         if($nilaiAkhir >= 81) {$grade3 = "A-"; $mutu3 = "3,70";
-        } elseif ($nilaiAkhir >= 76) {$grade3 = "B+"; $mutu3 = "3,30";
-        } elseif ($nilaiAkhir >= 71) {$grade3 = "B"; $mutu3 = "3,00";
-        } elseif ($nilaiAkhir >= 66) {$grade3 = "B-"; $mutu3 = "2,70";
-        } else {$grade = "C"; $mutu3 = "2,00";}
-
-        $bobot3 = $mutu3*$sksMatkul3;
-
-        if ($grade3 == 'A-' || $grade3 == 'C' || $grade3 == 'E') {$status3 = "lulus";
-        } else {
-            $status3 = "tidak lulus";
-        }
-
-
-        $namaMatkul4 = "Sistem Informasi";
-        $sksMatkul4 = "3";
-        $nilaiHadir4 = "92";
-        $nilaiTugas4 = "88";
-        $nilaiUts4 = "75";
-        $nilaiUas4 = "78";
-        $nilaiAkhir4 = "80";
-        $grade4 = "";
-        $mutu4 = "";
-        $bobot4 = "";
-        $status4 = "";
-
-        $nilaiAkhir = (0.2*$nilaiHadir4)+(0.2*$nilaiTugas4)+(0.3*$nilaiUts4)+(0.4*$nilaiUas4);
-
-        if($nilaiAkhir >= 81) {$grade4 = "A-"; $mutu4 = "3,70";
-        } elseif ($nilaiAkhir >= 76) {$grade4 = "B+"; $mutu4 = "3,30";
-        } elseif ($nilaiAkhir >= 71) {$grade4 = "B"; $mutu4 = "3,00";
-        } elseif ($nilaiAkhir >= 66) {$grade4 = "B-"; $mutu4 = "2,70";
-        } else {$grade = "C"; $mutu4 = "2,00";}
-
-        $bobot4 = $mutu4*$sksMatkul4;
-
-        if ($grade4 == 'A-' || $grade4 == 'C' || $grade4 == 'E') {$status4 = "lulus";
-        } else {
-            $status4 = "tidak lulus";
-        }
-
-        $namaMatkul5 = "Pemrograman Web Dasar";
-        $sksMatkul5 = "3";
-        $nilaiHadir5 = "69";
-        $nilaiTugas5 = "80";
-        $nilaiUts5 = "90";
-        $nilaiUas5 = "100";
-        $nilaiAkhir5 = "90";
-        $grade5 = "";
-        $mutu5 = "";
-        $bobot5 = "";
-        $status5 = "";
-
-        $nilaiAkhir = (0.2*$nilaiHadir5)+(0.2*$nilaiTugas5)+(0.3*$nilaiUts5)+(0.4*$nilaiUas5);
-
-        if($nilaiAkhir >= 91) {$grade5 = "A"; $mutu5 = "4,00";
-        } elseif ($nilaiAkhir >= 81) {$grade5 = "A-"; $mutu5 = "3,70";
-        } elseif ($nilaiAkhir >= 76) {$grade5 = "B+"; $mutu5 = "3,30";
-        } elseif ($nilaiAkhir >= 71) {$grade5 = "B"; $mutu5 = "3,00";
-        } else {$grade = "B-"; $mutu5 = "2,70";}
-
-        $bobot5 = $mutu5*$sksMatkul5;
-
-        if ($grade5 == 'A' || $grade5 == 'B-' || $grade5 == 'E') {$status5 = "lulus";
-        } else {
-            $status5 = "tidak lulus";
-        }
         
         ?>
-        <h2>Rekapitulasi IPK</h2>
-        <p><strong>Total SKS:</strong> <?php echo $sksMatkul1, $sksMatkul2, $sksMatkul3, $sksMatkul4, $sksMatkul5; ?></p>
-        <p><strong>Total Bobot:</strong> <?php echo $bobot1, $bobot2, $bobot3, $bobot4, $bobot5; ?></p>
-        <p><strong>Indeks Prestasi Kumulatif (IPK):</strong> <?php echo  ($totalBobot/$totalSKS); ?></p>
+
 
         <h2>Nilai Saya</h2>
         <p><strong>Nama Matakuliah-1 : </strong><strong> <?php echo $namaMatkul1; ?> </strong></p>
