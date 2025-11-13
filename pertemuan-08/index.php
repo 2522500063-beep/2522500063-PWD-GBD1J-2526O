@@ -52,17 +52,48 @@ endif;
       <p>Ini contoh paragraf HTML.</p>
     </section>
 
-    <section id= "Biodata Sederhana Mahasiswa">
-      <p><strong>NIM</strong> : 2522500063</p>
-      <p><strong>Nama Lengkap</strong> : Anjelita Cahaya</p>
-      <p><strong>Tempat Lahir</strong> : Pangkalpinang</p>
-      <p><strong> Lahir</strong> : 27-07-2007</p>
-      <p><strong>Hobi</strong> : Masak, Musik, Olahraga</p>
-      <p><strong>Pasangan</strong> : Tidak Ada</p>
-      <p><strong>Pekerjaan</strong> : Tidak Ada</p>
-      <p><strong>Nama Orang Tua</strong> : Sudarmaji dan Ibu Agus Fitriyanti</p>
-      <p><strong>Nama Kakak</strong> : Feby Wulandari</p>
-      <p><strong>Nama Adik</strong> : Tidak Ada</p>
+    <section id="biodata">
+      <h2>Biodata Sederhana Mahasiswa</h2>
+      <form action="proses.php" method="POST">
+      <p></p>
+      
+      <label>NIM:</label>
+      <input type="NIM" name="text" required>
+
+      <label>Nama Lengkap:</label>
+      <input type="text" name="nama" required>
+      
+      <label>Nama Lengkap:</label>
+      <input type="text" name="nama" required>
+      
+      <label>Tempat Lahir:</label>
+    <input type="text" name="tempat" required>
+
+    <label>Tanggal Lahir:</label>
+    <input type="date" name="tanggal" required>
+
+    <label>Hobi:</label>
+    <input type="text" name="hobi" required>
+
+    <label>Pasangan:</label>
+    <input type="text" name="pasangan" required>
+
+    <label>Pekerjaan:</label>
+    <input type="text" name="pekerjaan" required>
+
+    <label>Nama Orang Tua:</label>
+    <input type="text" name="ortu" required>
+
+    <label>Nama Kakak:</label>
+    <input type="text" name="kakak" required>
+
+    <label>Nama Adik:</label>
+    <input type="text" name="adik" required>
+
+    <button type="submit">Kirim</button>
+    <button type="reset">Batal</button>
+      
+
 
     </section>
     <section id="about">
@@ -93,8 +124,6 @@ endif;
       <p><strong>Nama Kakak:</strong> Antonius Setiawan</p>
       <p><strong>Nama Adik:</strong> <?php echo $sespesan ?></p>
 
-       <button type="submit">Kirim</button>
-        <button type="reset">Batal</button>
 
 
     </section>

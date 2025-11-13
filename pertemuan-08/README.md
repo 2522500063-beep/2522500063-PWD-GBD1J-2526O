@@ -10,4 +10,5 @@ Proses saya mengerjakan UTS ini sebagai berikut:<br>
 <ol>
   <li>silahkan diisi sesuai proses pengerjaan kalian masing-masing</li>
   <li>membuat form biodata</p>
+  <li>membuat form dan tombol</li>
 </ol>
