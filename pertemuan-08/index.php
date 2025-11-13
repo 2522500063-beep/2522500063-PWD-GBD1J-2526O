@@ -57,7 +57,7 @@ endif;
       <form action="proses.php" method="POST">
       <p></p>
       
-      <label>NIM:</label>
+      <label>NIM:</label> 
       <input type="NIM" name="text" required>
 
       <label>Nama Lengkap:</label>
@@ -70,7 +70,7 @@ endif;
     <input type="text" name="tempat" required>
 
     <label>Tanggal Lahir:</label>
-    <input type="date" name="tanggal" required>
+    <input type="text" name="tanggal" required>
 
     <label>Hobi:</label>
     <input type="text" name="hobi" required>

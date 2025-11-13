@@ -83,8 +83,7 @@ header li a:active {
   margin-bottom: 16px;
 }
 
-#home p,
-#biodata p {
+#home p {
   text-align: justify;
 }
 
@@ -100,8 +99,8 @@ header li a:active {
 }
 
 #about strong,
-#contact label>span
-#biodata {
+#contact label>span,
+#biodata strong {
   min-width: 180px;
   color: #003366;
   font-weight: 600;
@@ -122,8 +121,7 @@ header li a:active {
   box-sizing: border-box;
 }
 
-#contact button
-#biodata {
+#contact button {
   margin-top: 10px;
   display: inline-block;
   padding: 10px 24px;
@@ -183,8 +181,7 @@ footer {
     top: 8px;
   }
 
-  nav
-  #biodata {
+  nav {
     display: none;
     flex-direction: column;
     background: #003366;
