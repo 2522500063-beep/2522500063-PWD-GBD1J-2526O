@@ -14,4 +14,5 @@
   <li>menambahkan kode tanggal dalam format 2 digit tanggal, 3 digit nama bulan,
 dan 4 digit tahun</li>
 <li>menambahkan kode baru di fungsi.php untuk merender hasil atau output biodata</li>
+<li>menggantikan index.php baris 123-129 dan menambahkan code</li>
 </ol>
