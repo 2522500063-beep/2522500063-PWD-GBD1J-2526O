@@ -8,4 +8,5 @@
   <li>mengubah data POST ke array associative</li>
   <li>mengubah proses php baris 23-32</li>
   <li>mengubah index php baris 19-67</li>
+  <li>menambahkan baris kode baru setelah baris <h2>Tentang Saya</h2></li>
 </ol>
