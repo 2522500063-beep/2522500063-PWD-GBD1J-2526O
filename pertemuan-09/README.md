@@ -9,4 +9,6 @@
   <li>mengubah proses php baris 23-32</li>
   <li>mengubah index php baris 19-67</li>
   <li>menambahkan baris kode baru setelah baris <h2>Tentang Saya</h2></li>
+  <li>menghapus baris kode 130-140</li>
+  <li>menambahkan file baru dengan nama fungsi.php dan menambahkan kode</li>
 </ol>
