@@ -15,4 +15,5 @@
 dan 4 digit tahun</li>
 <li>menambahkan kode baru di fungsi.php untuk merender hasil atau output biodata</li>
 <li>menggantikan index.php baris 123-129 dan menambahkan code</li>
+</li>menambahkan kode di index php fungsi.php dengan kode require_once</li>
 </ol>
