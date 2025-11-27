@@ -13,4 +13,5 @@
   <li>menambahkan file baru dengan nama fungsi.php dan menambahkan kode</li>
   <li>menambahkan kode tanggal dalam format 2 digit tanggal, 3 digit nama bulan,
 dan 4 digit tahun</li>
+<li>menambahkan kode baru di fungsi.php untuk merender hasil atau output biodata</li>
 </ol>
