@@ -11,4 +11,6 @@
   <li>menambahkan baris kode baru setelah baris <h2>Tentang Saya</h2></li>
   <li>menghapus baris kode 130-140</li>
   <li>menambahkan file baru dengan nama fungsi.php dan menambahkan kode</li>
+  <li>menambahkan kode tanggal dalam format 2 digit tanggal, 3 digit nama bulan,
+dan 4 digit tahun</li>
 </ol>
