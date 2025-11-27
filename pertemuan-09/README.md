@@ -6,4 +6,5 @@
 <ol>
   <li>download dan extract file bahan pertemuan-09 dari elerning </li>
   <li>mengubah data POST ke array associative</li>
+  <li>mengubah proses php baris 23-32</li>
 </ol>
