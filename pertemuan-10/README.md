@@ -16,4 +16,5 @@
   <li>membuat query untuk membuat tabel tbl_tamu</li>
   <li>membuat file read.php menambahkan kode</li>
   <li>mengaktifkan db_pwd2025 dan tbl_tamu dan mengisi baris cnama, cemail, cpesan</li>
+  <li>duplicate read.php menjadi read_inc.php dan modif code</li>
 </ol>
