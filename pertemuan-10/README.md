@@ -13,4 +13,5 @@
   <li>echo session ke nilai label section contact selesai</li>
   <li>extract pertemuan 10, menambahkan koneksi.php, dan menambahkan kode didalam koneksi.php</li>
   <li>download pemasangan phpmyadmin pd laragon di dalam modul</li>
+  <li>membuat query untuk membuat tabel tbl_tamu</li>
 </ol>
