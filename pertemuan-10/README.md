@@ -15,4 +15,5 @@
   <li>download pemasangan phpmyadmin pd laragon di dalam modul</li>
   <li>membuat query untuk membuat tabel tbl_tamu</li>
   <li>membuat file read.php menambahkan kode</li>
+  <li>mengaktifkan db_pwd2025 dan tbl_tamu dan mengisi baris cnama, cemail, cpesan</li>
 </ol>
