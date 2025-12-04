@@ -14,4 +14,5 @@
   <li>extract pertemuan 10, menambahkan koneksi.php, dan menambahkan kode didalam koneksi.php</li>
   <li>download pemasangan phpmyadmin pd laragon di dalam modul</li>
   <li>membuat query untuk membuat tabel tbl_tamu</li>
+  <li>membuat file read.php menambahkan kode</li>
 </ol>
