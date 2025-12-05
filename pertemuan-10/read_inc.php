@@ -4,7 +4,7 @@ require 'koneksi.php';
 $fieldContact = [
     "nama" => ["label" => "Nama:", "suffix" => ""],
     "email" => ["label" => "Email:", "suffix" => ""],
-    "pesan" => ["label" => Pesan Anda:", "suffix" => ""]
+    "pesan" => ["label" => "Pesan Anda:", "suffix" => ""]
 ];
 
 $sql = "SELECT * FROM tbl_tamu ORDER BY cid DESC";

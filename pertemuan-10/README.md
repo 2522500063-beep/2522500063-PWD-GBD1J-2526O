@@ -18,4 +18,5 @@
   <li>mengaktifkan db_pwd2025 dan tbl_tamu dan mengisi baris cnama, cemail, cpesan</li>
   <li>duplicate read.php menjadi read_inc.php dan modif code</li>
   <li>mengganti kode di index.php hal 146</li>
+  <li>menghapus kode di index.php hal 133-141</li>
 </ol>
