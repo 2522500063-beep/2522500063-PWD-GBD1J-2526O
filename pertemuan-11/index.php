@@ -109,6 +109,14 @@ require_once __DIR__ . '/fungsi.php';
       <?= tampilkanBiodata($fieldConfig, $biodata) ?>
     </section>
 
+    <?php
+    $flash_sukses = $_SESSION['flash_sukses'] ?? ''; #jika query sukses
+    $flash_error  = $_SESSION['flash_error'] ?? ''; #jika ada error
+    $old          = $_SESSION['old'] ?? []; #untuk nilai lama form
+
+    unset($_SESSION['flash_sukses'], $_SESSION['flash_error'], $SESSION['old']); #bersihkan 3 session ini
+    ?>
+
     <section id="contact">
       <h2>Kontak Kami</h2>
       <form action="proses.php" method="POST">
@@ -116,7 +124,6 @@ require_once __DIR__ . '/fungsi.php';
         <label for="txtNama"><span>Nama:</span>
           <input type="text" id="txtNama" name="txtNama" placeholder="Masukkan nama" required autocomplete="name">
         </label>
-
         <label for="txtEmail"><span>Email:</span>
           <input type="email" id="txtEmail" name="txtEmail" placeholder="Masukkan email" required autocomplete="email">
         </label>

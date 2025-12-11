@@ -20,4 +20,5 @@
   <li>mengganti kode di index.php hal 146</li>
   <li>menghapus kode di index.php hal 133-141</li>
   <li>menambahkan kode fungsi.php dari no 2</li>
+  <li>update index.php dan menambahkan kode penangkap pesan sukses/gagal</li>
 </ol>
