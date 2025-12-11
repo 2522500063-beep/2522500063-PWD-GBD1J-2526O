@@ -21,4 +21,5 @@
   <li>menghapus kode di index.php hal 133-141</li>
   <li>menambahkan kode fungsi.php dari no 2</li>
   <li>update index.php dan menambahkan kode penangkap pesan sukses/gagal</li>
+  <li>tampilkan nilai lama dari form untuk antisipasi jika error</li>
 </ol>
