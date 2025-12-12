@@ -1,6 +1,43 @@
 <?php
 session_start();
 
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+  $_SESSION['flash_error'] = 'akses tidak valid.';
+  redirect_ke('index.php#contact');
+}
+
+$nama  = bersihkan($_POST['txtNama'] ?? '');
+$email = bersihkan($_POST['txtEmail'] ?? '');
+$pesan = bersihkan($_POST['txtPesan'] ?? '');
+
+#Validasi sederhana
+$errors = []; #ini array untuk menampung semua error yang ada
+
+if ($nama === '') {
+  $errors[] = 'Nama wajib diisi.';
+}
+
+if ($email === '') {
+  $errors[] = 'Email wajib diisi.';
+} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+  $errors[] = 'Format e-mail tidak valid.';
+}
+
+/*
+kondisi di bawah ini hanya dikerjakan jika ada error, simpan nilai lama dan pesan error, lalu redirect (konsep PRG)
+ */
+
+if (!empty($errors)) {
+  $_SESSION['old'] = [
+    'nama' => $nama,
+    'email' => $email,
+    'pesan' => $pesan,
+  ];
+
+  $_SESSION['flash_error'] = implode('<br>', $errors);
+  redirect_ke('index.php#contact');
+}
+
 $arrContact = [
   "nama" => $_POST["txtNama"] ?? "",
   "email" => $_POST["txtEmail"] ?? "",
