@@ -23,4 +23,5 @@
   <li>update index.php dan menambahkan kode penangkap pesan sukses/gagal</li>
   <li>tampilkan nilai lama dari form untuk antisipasi jika error</li>
   <li>rewrite proses.php</li>
+  <li>INSERT tbl_tamu dengan prepared statement mysqli dan simpan pesan sukses/gagal ke session serta redirect balik ke index.php#contact</li>
 </ol>
