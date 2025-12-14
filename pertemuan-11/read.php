@@ -11,6 +11,7 @@ $q = mysqli_query($conn, $sql);
         <th>Nama</th>
         <th>Email</th>
         <th>Pesan</th>
+        <th>Created Ad</th>
     </tr>
     
     <?php 
@@ -23,6 +24,7 @@ $q = mysqli_query($conn, $sql);
             <td><?= htmlspecialchars($row['cnama']); ?></td>
             <td><?= htmlspecialchars($row['cemail']); ?></td>
             <td><?= htmlspecialchars($row['cpesan']); ?></td>
+            <td><?= htmlspecialchars($row['dcreated_at']); ?></td> 
         </tr>
         <?php endwhile; ?>
     </table>

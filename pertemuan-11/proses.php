@@ -14,22 +14,42 @@ function redirect_ke($url) {
     exit;
 }
 
-$arrContact = [
-  "nama" => $_POST["txtNama"] ?? "",
-  "email" => $_POST["txtEmail"] ?? "",
-  "pesan" => $_POST["txtPesan"] ?? ""
-];
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+  $_SESSION['flash_error'] = 'akses tidak valid.';
+  redirect_ke('index.php#contact');
+}
 
 $nama  = trim($_POST['txtNama']);
 $email = trim($_POST['txtEmail']);
 $pesan = trim($_POST['txtPesan']);
 
-$_SESSION['old'] = $_POST;
+$nama  = bersihkan($_POST['txtNama'] ?? '');
+$email = bersihkan($_POST['txtEmail'] ?? '');
+$pesan = bersihkan($_POST['txtPesan'] ?? '');
 
-if ($nama === '' || $email === '' || $pesan === '') {
-    $_SESSION['flash_error'] = "Semua field wajib diisi!";
-    header("Location: index.php#contact");
-    exit;
+#Validasi sederhana
+$errors = []; #ini array untuk menampung semua error yang ada
+
+$captcha = trim($_POST["captcha"] ?? '');
+
+if ($captcha === "") {
+  $eror[] = "Captcha harus diisi!";
+} elseif ($captcha != 5) {
+  $eror[] = "Jawaban captcha salah!";
+}
+
+if ($nama === '') {
+  $errors[] = 'Nama wajib diisi.';
+}
+
+if ($email === '') {
+  $errors[] = 'Email wajib diisi.';
+} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+  $errors[] = 'Format e-mail tidak valid.';
+}
+
+if ($pesan === '') {
+  $errors[] = 'Pesan wajib diisi.';
 }
 
 if (strlen($nama) < 3) {
@@ -44,35 +64,11 @@ if (strlen($pesan) < 10) {
     exit;
 }
 
-/* kalau lolos validasi */
-$_SESSION['flash_sukses'] = "Pesan berhasil dikirim!";
-header("Location: index.php#contact");
-exit;
+$captcha = $_POST['captcha'];
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-  $_SESSION['flash_error'] = 'akses tidak valid.';
+if ($captcha != 5) {
+  $_SESSION['flash_error'] = 'Captcha salah!';
   redirect_ke('index.php#contact');
-}
-
-$nama  = bersihkan($_POST['txtNama'] ?? '');
-$email = bersihkan($_POST['txtEmail'] ?? '');
-$pesan = bersihkan($_POST['txtPesan'] ?? '');
-
-#Validasi sederhana
-$errors = []; #ini array untuk menampung semua error yang ada
-
-if ($nama === '') {
-  $errors[] = 'Nama wajib diisi.';
-}
-
-if ($email === '') {
-  $errors[] = 'Email wajib diisi.';
-} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-  $errors[] = 'Format e-mail tidak valid.';
-}
-
-if ($pesan === '') {
-  $errors[] = 'Pesan wajib diisi.';
 }
 
 /*
@@ -114,8 +110,15 @@ if (mysqli_stmt_execute($stmt)) { #jka berhasil, kosongkan old value, beri pesan
   $_SESSION['flash_error'] = 'Data gagal disimpan. Silahkan coba lagi.';
   redirect_ke('index.php#contact');
 }
+
 #tutup statement
 mysqli_stmt_close($stmt);
+
+$arrContact = [
+  "nama" => $_POST["txtNama"] ?? "",
+  "email" => $_POST["txtEmail"] ?? "",
+  "pesan" => $_POST["txtPesan"] ?? ""
+];
 
 $_SESSION["contact"] = $arrContact;
 
