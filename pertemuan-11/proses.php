@@ -1,5 +1,24 @@
 <?php
 session_start();
+include 'koneksi.php'; // pastikan file ini ada
+
+function bersihkan($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
+    return $data;
+}
+
+function redirect_ke($url) {
+    header("Location: $url");
+    exit;
+}
+
+$arrContact = [
+  "nama" => $_POST["txtNama"] ?? "",
+  "email" => $_POST["txtEmail"] ?? "",
+  "pesan" => $_POST["txtPesan"] ?? ""
+];
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   $_SESSION['flash_error'] = 'akses tidak valid.';
@@ -69,11 +88,6 @@ if (mysqli_stmt_execute($stmt)) { #jka berhasil, kosongkan old value, beri pesan
 #tutup statement
 mysqli_stmt_close($stmt);
 
-$arrContact = [
-  "nama" => $_POST["txtNama"] ?? "",
-  "email" => $_POST["txtEmail"] ?? "",
-  "pesan" => $_POST["txtPesan"] ?? ""
-];
 $_SESSION["contact"] = $arrContact;
 
 $arrBiodata = [
