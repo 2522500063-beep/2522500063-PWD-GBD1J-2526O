@@ -25,4 +25,5 @@
   <li>tampilkan nilai lama dari form untuk antisipasi jika error</li>
   <li>rewrite proses.php</li>
   <li>INSERT tbl_tamu dengan prepared statement mysqli dan simpan pesan sukses/gagal ke session serta redirect balik ke index.php#contact</li>
+  <li>menambahkan kolom nomor urut di read.php</li>
 </ol>
