@@ -26,4 +26,5 @@
   <li>rewrite proses.php</li>
   <li>INSERT tbl_tamu dengan prepared statement mysqli dan simpan pesan sukses/gagal ke session serta redirect balik ke index.php#contact</li>
   <li>menambahkan kolom nomor urut di read.php</li>
+  <li>tambah validasi panjang minimal nama 3 karakter dan pesan 10 karakter</li>
 </ol>

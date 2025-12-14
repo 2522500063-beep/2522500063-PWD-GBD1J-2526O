@@ -20,6 +20,35 @@ $arrContact = [
   "pesan" => $_POST["txtPesan"] ?? ""
 ];
 
+$nama  = trim($_POST['txtNama']);
+$email = trim($_POST['txtEmail']);
+$pesan = trim($_POST['txtPesan']);
+
+$_SESSION['old'] = $_POST;
+
+if ($nama === '' || $email === '' || $pesan === '') {
+    $_SESSION['flash_error'] = "Semua field wajib diisi!";
+    header("Location: index.php#contact");
+    exit;
+}
+
+if (strlen($nama) < 3) {
+    $_SESSION['flash_error'] = "Nama minimal 3 karakter!";
+    header("Location: index.php#contact");
+    exit;
+}
+
+if (strlen($pesan) < 10) {
+    $_SESSION['flash_error'] = "Pesan minimal 10 karakter!";
+    header("Location: index.php#contact");
+    exit;
+}
+
+/* kalau lolos validasi */
+$_SESSION['flash_sukses'] = "Pesan berhasil dikirim!";
+header("Location: index.php#contact");
+exit;
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   $_SESSION['flash_error'] = 'akses tidak valid.';
   redirect_ke('index.php#contact');
