@@ -30,4 +30,5 @@
   <li>menambahkan captcha sederhana</li>
   <li>menambah field baru di tbl_tamu</li>
   <li>menambah kolom Created At di sebelah kolom pesan</li>
+  <li>menambahkan kolom aksi setelah kolom no</li>
 </ol>

@@ -7,7 +7,6 @@ $q = mysqli_query($conn, $sql);
 <table border="1" cellpadding="8" cellspacing="0">
     <tr>
         <th>No</th>
-        <th>Aksi</th>
         <th>ID</th>
         <th>Nama</th>
         <th>Email</th>
@@ -21,7 +20,6 @@ $q = mysqli_query($conn, $sql);
     ?>
         <tr>
             <td><?= $no++; ?></td>
-            <td><a= hreaf="edit.php?cid=>? (int)$row['cid']; ?>Edit<a></td>
             <td><?= $row['cid']; ?></td>
             <td><?= htmlspecialchars($row['cnama']); ?></td>
             <td><?= htmlspecialchars($row['cemail']); ?></td>
