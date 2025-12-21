@@ -37,4 +37,5 @@
   <li>data pada tabel read.php sudah terbaru yang telah di update</li>
   <li>akses tidak valid sudah ada</li>
   <li>record tidak ditemukan sudah berhasil</li>
+  <li>akses tidak valid, dan query tidak benar sudah berhasil</li>
 </ol>
