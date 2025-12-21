@@ -32,4 +32,5 @@
   <li>menambah kolom Created At di sebelah kolom pesan</li>
   <li>menambahkan kolom aksi setelah kolom no</li>
   <li>menampilkan flash sukses dan error</li>
+  <li>file baru edit.php untuk menampilkan form dgn data lama yg dibaca berdasarkan cid(prefill from)</li>
 </ol>

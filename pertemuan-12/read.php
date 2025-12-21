@@ -31,9 +31,6 @@ if (!$q) {
     </div>
     <?php endif; ?>
 
-    <table border="1" cellpadding="8" cellpadding="0">
-        <tr>
-
 <table border="1" cellpadding="8" cellspacing="0">
     <tr>
         <th>No</th>
