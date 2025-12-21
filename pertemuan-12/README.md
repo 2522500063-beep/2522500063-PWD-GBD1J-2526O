@@ -34,4 +34,5 @@
   <li>menampilkan flash sukses dan error</li>
   <li>file baru edit.php untuk menampilkan form dgn data lama yg dibaca berdasarkan cid(prefill from)</li>
   <li>buat file baru proses.update.php untuk menyimpan perubahan</li>
+  <li>data pada tabel read.php sudah terbaru yang telah di update</li>
 </ol>

@@ -23,7 +23,7 @@ if (!$cid) {
 $nama  = bersihkan($_POST['txtNamaEd'] ?? '');
 $email = bersihkan($_POST['txtEmailEd'] ?? '');
 $pesan = bersihkan($_POST['txtPesanEd'] ?? '');
-$pesan = bersihkan($_POST['txtCaptcha'] ?? '');
+$captcha = bersihkan($_POST['txtCaptcha'] ?? '');
 
 #validasi sederhana
 $errors = []; #ini array untuk menampung semua error yang ada
@@ -55,7 +55,7 @@ if (mb_strlen($pesan) < 10) {
 }
 
 if ($captcha!=="6") {
-    $errors[] = 'Jawaban'. $captcha.' captcha salah.';
+    $errors[] = 'Jawaban '. $captcha.' captcha salah.';
 }
 
 /*
@@ -83,12 +83,12 @@ SET cnama = ?, cemail = ?, cpesan= ?
 WHERE cid = ?");
 if (!$stmt) {
     #jika gagal prepare, kirim pesan error (tanpa detail sensitif)
-    $_SESSION['flash_error'] = 'Trerjadi kesalahan sistem(prepare gagal).';
+    $_SESSION['flash_error'] = 'Terjadi kesalahan sistem(prepare gagal).';
     redirect_ke('edit.php?cid='. (int)$cid);
 }
 
 #bind parameter dan eksekusi (s = string, i = integer)
-mysqli_stmt_bind_param($stmt,, "sssi", $nama, $email, $pesan, $cid);
+mysqli_stmt_bind_param($stmt, "sssi", $nama, $email, $pesan, $cid);
 
 if (mysqli_stmt_execute($stmt)) { #jika berhasil, kosongkan old value
     unset($_SESSION['old']);
@@ -104,7 +104,7 @@ if (mysqli_stmt_execute($stmt)) { #jika berhasil, kosongkan old value
     'pesan' => $pesan,
   ];
   $_SESSION['flash_error'] = 'Data gagal diperbaharui. Silahkan coba lagi.';
-  redirect_ke('eedit.php?cid='. (int)$cid);
+  redirect_ke('edit.php?cid='. (int)$cid);
 }
 #tutup statement
 mysqli_stmt_close($stmt); 

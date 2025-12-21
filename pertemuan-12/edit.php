@@ -1,7 +1,7 @@
 <?php
 session_start();
 require 'koneksi.php';
-require 'koneksi.php';
+require 'fungsi.php';
 
 /*
 Ambil nilai cid dari GET dan lakukan validasi untuk 
@@ -29,7 +29,7 @@ kalau $cid tidak valid, maka jangan lanjutkan proses,
 kembalikan pengguna ke halaman awal (read.php) sembari
 mengirim penanda error.
 */
-if ($cid) {
+if (!$cid) {
     $_SESSION['flash_error'] = 'Akses tidak valid.';
     redirect_ke('read.php');
 }
@@ -66,9 +66,9 @@ $flash_error = $_SESSION['flash_error'] ?? '';
 $old = $_SESSION['old'] ?? [];
 unset($_SESSION['flash_error'], $_SESSION['old']);
 if (!empty($old)) {
-    $nama = $row['cnama'] ?? '';
-    $email = $row['cemail'] ?? '';
-    $pesan = $row['cpesan'] ?? '';
+    $nama = $old['nama'] ?? $nama;
+    $email = $old['email'] ?? $email;
+    $pesan = $old['pesan'] ?? $pesan;
 }
 ?>
 
@@ -89,8 +89,8 @@ if (!empty($old)) {
             <nav>
                 <ul>
                     <li><a href="#home">Beranda</a></li>
-                    <li><a href="#about">Beranda</a></li>
-                    <li><a href="#contact">Beranda</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#contact">Kontak</a></li>
                 </ul>
             </nav>
         </header>
@@ -98,7 +98,7 @@ if (!empty($old)) {
         <main>
             <section id="contact">
                 <h2>Edit Buku Tamu</h2>
-                <?php if (!empty($_flash_errror)): ?>
+                <?php if (!empty($flash_error)): ?>
                     <div style="padding:10px; margin-bottom:10px;
                         background:#f8d7da; color:#721c24; border-radius:6px;">
                         <?= $flash_error; ?>
@@ -111,19 +111,19 @@ if (!empty($old)) {
                     <label for="txtNama"><span>Nama:</span>
                         <input type="text" id="txtNama" name="txtNamaEd"
                         placeholder="Masukkan Nama" required autocomplate="name"
-                        value="<?= !empty($nama) ? $nama : ?>">
+                        value="<?= !empty($nama) ? $nama : '' ?>">
                     </label>
 
                     <label for="txtEmal"><span>Email:</span>
                         <input type="text" id="txtEmail" name="txtEmailEd"
                         placeholder="Masukkan Email" required autocomplate="email"
-                        value="<?= !empty($email) ? $email : ?>">
+                        value="<?= !empty($email) ? $email : '' ?>">
                     </label>
 
-                    <label for="txtPesan"><span>Pesan:</span>
+                    <label for="txtPesan"><span>Pesan Anda:</span>
                         <textarea id="txtPesan" name="txtPesanEd" rows="4"
                         placeholder="Tulis Pesan Anda..." 
-                        required><? !empty($pesan) ? $pesan : '' ?></textarea>
+                        required><?= !empty($pesan) ? $pesan : '' ?></textarea>
                     </label>
 
                     <label for="txtCaptcha"><span>Captcha 2 x 3 = ?</span>
@@ -134,7 +134,7 @@ if (!empty($old)) {
                     <button type="submit">Kirim</button>
                     <button type="submit">Batal</button>
                     <a href="read.php" class="reset">Kembali</a>
-                    </from>
+                    </form>
                     </section>
                     </main>
 
