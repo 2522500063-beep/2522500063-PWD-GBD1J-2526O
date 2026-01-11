@@ -10,13 +10,13 @@
   }
 
   #validasi cid wajib angka dan > 0
-  $cid = filter_input(INPUT_POST, 'nim', FILTER_VALIDATE_INT, [
+  $cnim = filter_input(INPUT_POST, 'txtNimEd', FILTER_VALIDATE_INT, [
     'options' => ['min_range' => 1]
   ]);
 
   if (!$cnim) {
     $_SESSION['flash_error'] = 'NIM Tidak Valid.';
-    redirect_ke('edit.php?cid='. (int)$nim);
+    redirect_ke('edit_biodata.php?cid='. (int)$cnim);
   }
 
   #ambil dan bersihkan (sanitasi) nilai dari form
@@ -39,8 +39,8 @@
   $errors[] = 'NIM wajib diisi.';
 }
 
-  if ($nama === '') {
-  $errors[] = 'Nama wajib diisi.';
+  if ($namalengkap === '') {
+  $errors[] = 'Nama lengkap wajib diisi.';
 }
 
 if ($tempatlahir === '') {
@@ -55,8 +55,8 @@ if ($hobi === '') {
   $errors[] = 'hobi wajib diisi.';
 }
 
-if (mb_strlen($nama) < 3) {
-  $errors[] = 'Nama minimal 3 karakter.';
+if (mb_strlen($namalengkap) < 3) {
+  $errors[] = 'Nama  minimal 3 karakter.';
 }
 
 if ($pasangan === '') {
@@ -86,19 +86,19 @@ if ($namaadek === '') {
   if (!empty($errors)) {
     $_SESSION['old'] = [
        'nim'  => $nim,
-    'nama lengkap' => $namalengkap,
-    'tempat lahir' => $tempatlahir,
-    'tanggal lahir' => $tanggallahir,
+    'namalengkap' => $namalengkap,
+    'tempatlahir' => $tempatlahir,
+    'tanggallahir' => $tanggallahir,
     'hobi' => $hobi,
     'pasangan' => $pasangan,
     'pekerjaan' => $pekerjaan,
-    'nama orang tua' => $namaortu,
-    'nama kakak' => $namakakak,
-    'nama adek' => $namaadek,
+    'namaoratu' => $namaortu,
+    'namakakak' => $namakakak,
+    'namaadek' => $namaadek,
   ];
 
     $_SESSION['flash_error'] = implode('<br>', $errors);
-    redirect_ke('edit.php?cid='. (int)$cid);
+    redirect_ke('edit_biodata.php?cid='. (int)$cnim);
   }
 
   /*
@@ -112,11 +112,23 @@ if ($namaadek === '') {
   if (!$stmt) {
     #jika gagal prepare, kirim pesan error (tanpa detail sensitif)
     $_SESSION['flash_error'] = 'Terjadi kesalahan sistem (prepare gagal).';
-    redirect_ke('edit.php?cid='. (int)$cid);
+    redirect_ke('edit_biodata.php?cid='. (int)$cnim);
   }
 
   #bind parameter dan eksekusi (s = string, i = integer)
-  mysqli_stmt_bind_param($stmt, "sssi", $nim, $namalengkap, $tempatlahir, $tanggallahir, $hobi, $pasangan, $pekerjaan, $namaortu, $namakakak, $namaadek);
+  mysqli_stmt_bind_param(
+    $stmt,
+     "sssssssssi", 
+    $namalengkap,
+    $tempatlahir, 
+    $tanggallahir, 
+    $hobi, 
+    $pasangan, 
+    $pekerjaan, 
+    $namaortu, 
+    $namakakak, 
+    $namaadek
+    );
 
   if (mysqli_stmt_execute($stmt)) { #jika berhasil, kosongkan old value
     unset($_SESSION['old']);
@@ -139,12 +151,12 @@ if ($namaadek === '') {
     'nama adek' => $namaadek,
   ];
     $_SESSION['flash_error'] = 'Data gagal diperbaharui. Silakan coba lagi.';
-    redirect_ke('edit.php?cid='. (int)$cid);
+    redirect_ke('edit_biodata.php?cid='. (int)$cnim);
   }
   #tutup statement
   mysqli_stmt_close($stmt);
 
-  redirect_ke('edit.php?cid='. (int)$cid);
+  redirect_ke('edit_biodata.php?cid='. (int)$cnim);
 
 
 
