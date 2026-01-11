@@ -5,4 +5,6 @@ Nama: Anjelita cahaya
 NIM:2522500063
 <ol>
     <li>extract pertemuan 15 dan membuat tabel biodata mahasiswa</li>
+    <li>menmabahkan file bio_mahasiswa dan melakukan validasi, sanitasi, konsep 
+PRG, dan insert ke tabel biodata mahasiswa</li>
 </ol>

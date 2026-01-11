@@ -85,6 +85,10 @@ require_once __DIR__ . '/fungsi.php';
         <button type="submit">Kirim</button>
         <button type="reset">Batal</button>
       </form>
+      
+      <br>
+      <hr>
+      <h2>biodata mahasiswa</h2>
     </section>
 
     <?php

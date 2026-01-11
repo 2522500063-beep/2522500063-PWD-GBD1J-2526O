@@ -1,9 +1,13 @@
+
+
+
+
 <?php
   session_start();
   require 'koneksi.php';
   require 'fungsi.php';
 
-  $sql = "SELECT * FROM tbl_tamu ORDER BY cid DESC";
+  $sql = "SELECT * FROM tbl_mahasiswa ORDER BY nim DESC";
   $q = mysqli_query($conn, $sql);
   if (!$q) {
     die("Query error: " . mysqli_error($conn));
@@ -34,28 +38,31 @@
 <table border="1" cellpadding="8" cellspacing="0">
   <tr>
     <th>No</th>
-    <th>Aksi</th>
-    <th>ID</th>
-    <th>Nama</th>
-    <th>Email</th>
-    <th>Pesan</th>
-    <th>Created At</th>
+    <th>NIM</th>
+    <th>Nama Lengkap</th>
+    <th>Tempat Lahir</th>
+    <th>Tanggal Lahir</th>
+    <th>Hobi</th>
+    <th>Pasangan</th>
+    <th>Pekerjaan</th>
+    <th>Nama orang tua</th>
+    <th>Nama kakak</th>
+    <th>Nama adik</th>
   </tr>
   <?php $i = 1; ?>
   <?php while ($row = mysqli_fetch_assoc($q)): ?>
     <tr>
       <td><?= $i++ ?></td>
-      <td>
-        <a href="edit.php?cid=<?= (int)$row['cid']; ?>">Edit</a>
-        <a onclick="return confirm('Hapus <?= htmlspecialchars($row['cnama']); ?>?')" href="proses_delete.php?cid=<?= (int)$row['cid']; ?>">Delete</a>
-      </td>
-      <td><?= $row['cid']; ?></td>
-      <td><?= htmlspecialchars($row['cnama']); ?></td>
-      <td><?= htmlspecialchars($row['cemail']); ?></td>
-      <td><?= nl2br(htmlspecialchars($row['cpesan'])); ?></td>
-      <td><?= formatTanggal(htmlspecialchars($row['dcreated_at'])); ?></td>
+      <td><?= htmlspecialchars($row['nim']); ?></td>
+      <td><?= htmlspecialchars($row['nama_lengkap']); ?></td>
+      <td><?= $row['tempat_lahir']; ?></td>
+      <td><?= $row['tanggal_lahir']; ?></td>
+      <td><?= $row['hobi']; ?></td>
+      <td><?= $row['pasangan']; ?></td>
+      <td><?= $row['pekerjaan']; ?></td>
+      <td><?= $row['nama_orang_tua']; ?></td>
+      <td><?= $row['nama_kakak']; ?></td>
+      <td><?= $row['nama_adik']; ?></td>
     </tr>
   <?php endwhile; ?>
 </table>
-
-
