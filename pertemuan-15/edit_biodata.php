@@ -55,8 +55,8 @@ if (!$cnim) {
     Ambil data lama dari DB menggunakan prepared statement, 
     jika ada kesalahan, tampilkan penanda error.
   */
-  $stmt = mysqli_prepare($conn, "SELECT cnim, ctempatlahir, ctanggallahir, chobi, cpasangan, pekerjaan, cnamaortu, cnamakakak, cnamaadek
-                                    FROM tbl_mahasiswa WHERE cnim = ? LIMIT 1");
+  $stmt = mysqli_prepare($conn, "SELECT cnim,cnamalengkap, ctempatlahir, ctanggallahir, chobi, cpasangan, pekerjaan, cnamaortu, cnamakakak, cnamaadek
+                                    FROM tbl_mahasiswa WHERE nim = ? LIMIT 1");
   if (!$stmt) {
     $_SESSION['flash_error'] = 'Query tidak benar.';
     redirect_ke('bio_mahasiswa.php');

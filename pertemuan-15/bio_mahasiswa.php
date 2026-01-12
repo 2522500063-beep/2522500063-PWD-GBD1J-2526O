@@ -1,7 +1,3 @@
-
-
-
-
 <?php
   session_start();
   require 'koneksi.php';
@@ -55,8 +51,8 @@
     <tr>
       <td><?= $i++ ?></td>
       <td>
-        <a href="edit.php?cid=<?= (int)$row['cid']; ?>">Edit</a>
-        <a onclick="return confirm('Hapus <?= htmlspecialchars($row['cnama']); ?>?')" href="proses_delete_bio.php?cnim=<?= (int)$row['nim']; ?>">Delete</a>
+        <a href="edit.php?nim=<?= (int)$row['nim']; ?>">Edit</a>
+        <a onclick="return confirm('Hapus <?= htmlspecialchars($row['nama_lengkap']); ?>?')" href="proses_delete_bio.php?nim=<?= (int)$row['nim']; ?>">Delete</a>
       </td>
       <td><?= $row['nim']; ?></td>
       <td><?= $row['nama_lengkap']; ?></td>

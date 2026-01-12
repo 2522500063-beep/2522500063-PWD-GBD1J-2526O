@@ -100,7 +100,7 @@ if ($namaadek === '') {
   ];
 
     $_SESSION['flash_error'] = implode('<br>', $errors);
-    redirect_ke('edit_biodata.php?cid='. (int)$cnim);
+    redirect_ke('edit_biodata.php?cnim='. (int)$cnim);
   }
 
   /*

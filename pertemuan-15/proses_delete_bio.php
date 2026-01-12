@@ -4,12 +4,12 @@
   require_once __DIR__ . '/fungsi.php';
 
   #validasi cid wajib angka dan > 0
-  $cid = filter_input(INPUT_GET, 'cnim', FILTER_VALIDATE_INT, [
+  $nim = filter_input(INPUT_GET, 'nim', FILTER_VALIDATE_INT, [
     'options' => ['min_range' => 1]
   ]);
 
-  if (!$cid) {
-    $_SESSION['flash_error'] = 'CNIM Tidak Valid.';
+  if (!$nim) {
+    $_SESSION['flash_error'] = 'NIM Tidak Valid.';
     redirect_ke('bio_mahasiswa.php');
   }
 
@@ -19,7 +19,7 @@
     (WAJIB WHERE cid = ?)
   */
   $stmt = mysqli_prepare($conn, "DELETE FROM tbl_mahasiswa
-                                WHERE cnim = ?");
+                                WHERE nim = ?");
   if (!$stmt) {
     #jika gagal prepare, kirim pesan error (tanpa detail sensitif)
     $_SESSION['flash_error'] = 'Terjadi kesalahan sistem (prepare gagal).';
@@ -27,7 +27,7 @@
   }
 
   #bind parameter dan eksekusi (s = string, i = integer)
-  mysqli_stmt_bind_param($stmt, "i", $cnim);
+  mysqli_stmt_bind_param($stmt, "i", $nim);
 
   if (mysqli_stmt_execute($stmt)) { #jika berhasil, kosongkan old value
     /*
