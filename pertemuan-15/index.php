@@ -85,7 +85,7 @@ require_once __DIR__ . '/fungsi.php';
         <button type="submit">Kirim</button>
         <button type="reset">Batal</button>
       </form>
-      
+
       <br>
       <hr>
       <h2>biodata mahasiswa</h2>
@@ -111,6 +111,7 @@ require_once __DIR__ . '/fungsi.php';
     <section id="about">
       <h2>Tentang Saya</h2>
       <?= tampilkanBiodata($fieldConfig, $biodata) ?>
+      
     </section>
 
     <?php

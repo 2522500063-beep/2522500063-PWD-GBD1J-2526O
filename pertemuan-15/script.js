@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener('resize', applyResponsiveLayout);
 });
 
-document.querySelector("form").addEventListener("submit", function (e) {
+// document.querySelector("form").addEventListener("submit", function (e) {
     // const nama = document.getElementById("txtNama");
     // const email = document.getElementById("txtEmail");
     // const pesan = document.getElementById("txtPesan");
@@ -130,7 +130,7 @@ document.querySelector("form").addEventListener("submit", function (e) {
     //     //e.target.reset();
     //     e.target.submit();
     // }
-});
+// });
 
 function showError(inputElement, message) {
     const label = inputElement.closest("label");
@@ -174,3 +174,4 @@ window.addEventListener("resize", () => {
         if (target) alignErrorMessage(small, target);
     });
 });
+

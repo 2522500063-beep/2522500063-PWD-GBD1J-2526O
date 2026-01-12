@@ -1,7 +1,7 @@
 <?php
+
   session_start();
   require 'koneksi.php';
-  
 
   /*
     Ambil nilai cid dari GET dan lakukan validasi untuk 
@@ -12,6 +12,23 @@
   $cnim = filter_input(INPUT_GET, 'cnim', FILTER_VALIDATE_INT, [
     'options' => ['min_range' => 1]
   ]);
+
+  $cnim = filter_input(INPUT_POST, 'cnim', FILTER_VALIDATE_INT);
+
+$namalengkap  = bersihkan($_POST['namalengkap'] ?? '');
+$tempatlahir = bersihkan($_POST['tempatlahir'] ?? '');
+$tanggallahir = bersihkan($_POST['tanggallahir'] ?? '');
+$hobi = bersihkan($_POST['hobi'] ?? '');
+$pasangan = bersihkan($_POST['pasangan'] ?? '');
+$pekerjaan = bersihkan($_POST['pekerjaan'] ?? '');
+$namaortu = bersihkan($_POST['namaortu'] ?? '');
+$namakakak = bersihkan($_POST['namakakak'] ?? '');
+$namaadek = bersihkan($_POST['namaadek'] ?? '');
+
+if (!$cnim) {
+  $_SESSION['flash_error'] = 'NIM tidak valid.';
+  redirect_ke('bio_mahasiswa.php');
+}
   /*
     Skrip di atas cara penulisan lamanya adalah:
     $cid = $_GET['cid'] ?? '';
@@ -38,14 +55,14 @@
     Ambil data lama dari DB menggunakan prepared statement, 
     jika ada kesalahan, tampilkan penanda error.
   */
-  $stmt = mysqli_prepare($conn, "SELECT cnim = ?, ctempatlahir = ?, ctanggallahir = ?, chobi = ?, cpasangan = ?, pekerjaan = ?, cnamaortu = ?, cnamakakak = ?, cnamaadek = ?
+  $stmt = mysqli_prepare($conn, "SELECT cnim, ctempatlahir, ctanggallahir, chobi, cpasangan, pekerjaan, cnamaortu, cnamakakak, cnamaadek
                                     FROM tbl_mahasiswa WHERE cnim = ? LIMIT 1");
   if (!$stmt) {
     $_SESSION['flash_error'] = 'Query tidak benar.';
     redirect_ke('bio_mahasiswa.php');
   }
 
-  mysqli_stmt_bind_param($stmt, "i", $cid);
+  mysqli_stmt_bind_param($stmt, "i", $cnim);
   mysqli_stmt_execute($stmt);
   $res = mysqli_stmt_get_result($stmt);
   $row = mysqli_fetch_assoc($res);
@@ -118,57 +135,33 @@
             <?= $flash_error; ?>
           </div>
         <?php endif; ?>
-      <form action="proses.php" method="POST">
+        
+      <form action="proses_update_bio.php" method="POST">
+<input type="hidden" name="cnim" value="<?= $nim ?>">
 
-        <label for="txtNim"><span>NIM:</span>
-          <input type="text" id="txtNim" name="txtNim" placeholder="Masukkan NIM" required>
-        </label>
+<input type="text" name="namalengkap" value="<?= $namalengkap ?>">
+<input type="text" name="tempatlahir" value="<?= $tempatlahir ?>">
+<input type="text" name="tanggallahir" value="<?= $tanggallahir ?>">
+<input type="text" name="hobi" value="<?= $hobi ?>">
+<input type="text" name="pasangan" value="<?= $pasangan ?>">
+<input type="text" name="pekerjaan" value="<?= $pekerjaan ?>">
+<input type="text" name="namaortu" value="<?= $namaortu ?>">
+<input type="text" name="namakakak" value="<?= $namakakak ?>">
+<input type="text" name="namaadek" value="<?= $namaadek ?>">
 
-        <label for="txtNmLengkap"><span>Nama Lengkap:</span>
-          <input type="text" id="txtNmLengkap" name="txtNmLengkap" placeholder="Masukkan Nama Lengkap" required>
-        </label>
 
-        <label for="txtT4Lhr"><span>Tempat Lahir:</span>
-          <input type="text" id="txtT4Lhr" name="txtT4Lhr" placeholder="Masukkan Tempat Lahir" required>
-        </label>
 
-        <label for="txtTglLhr"><span>Tanggal Lahir:</span>
-          <input type="text" id="txtTglLhr" name="txtTglLhr" placeholder="Masukkan Tanggal Lahir" required>
-        </label>
-
-        <label for="txtHobi"><span>Hobi:</span>
-          <input type="text" id="txtHobi" name="txtHobi" placeholder="Masukkan Hobi" required>
-        </label>
-
-        <label for="txtPasangan"><span>Pasangan:</span>
-          <input type="text" id="txtPasangan" name="txtPasangan" placeholder="Masukkan Pasangan" required>
-        </label>
-
-        <label for="txtKerja"><span>Pekerjaan:</span>
-          <input type="text" id="txtKerja" name="txtKerja" placeholder="Masukkan Pekerjaan" required>
-        </label>
-
-        <label for="txtNmOrtu"><span>Nama Orang Tua:</span>
-          <input type="text" id="txtNmOrtu" name="txtNmOrtu" placeholder="Masukkan Nama Orang Tua" required>
-        </label>
-
-        <label for="txtNmKakak"><span>Nama Kakak:</span>
-          <input type="text" id="txtNmKakak" name="txtNmKakak" placeholder="Masukkan Nama Kakak" required>
-        </label>
-
-        <label for="txtNmAdik"><span>Nama Adik:</span>
-          <input type="text" id="txtNmAdik" name="txtNmAdik" placeholder="Masukkan Nama Adik" required>
-        </label>
 
         <button type="submit">Kirim</button>
         <button type="reset">Batal</button>
-        <a href="bio_mahasiswa.php" class="reset">Kembali</a>
+        
       </form>
        
       </section>
     </main>
 
-    <script src="script.js"></script>
+   
+    
   </body>
 </html>
 

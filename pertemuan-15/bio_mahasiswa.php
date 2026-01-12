@@ -38,6 +38,7 @@
 <table border="1" cellpadding="8" cellspacing="0">
   <tr>
     <th>No</th>
+    <th>Aksi</th>
     <th>NIM</th>
     <th>Nama Lengkap</th>
     <th>Tempat Lahir</th>
@@ -53,8 +54,12 @@
   <?php while ($row = mysqli_fetch_assoc($q)): ?>
     <tr>
       <td><?= $i++ ?></td>
-      <td><?= htmlspecialchars($row['nim']); ?></td>
-      <td><?= htmlspecialchars($row['nama_lengkap']); ?></td>
+      <td>
+        <a href="edit.php?cid=<?= (int)$row['cid']; ?>">Edit</a>
+        <a onclick="return confirm('Hapus <?= htmlspecialchars($row['cnama']); ?>?')" href="proses_delete_bio.php?cnim=<?= (int)$row['nim']; ?>">Delete</a>
+      </td>
+      <td><?= $row['nim']; ?></td>
+      <td><?= $row['nama_lengkap']; ?></td>
       <td><?= $row['tempat_lahir']; ?></td>
       <td><?= $row['tanggal_lahir']; ?></td>
       <td><?= $row['hobi']; ?></td>
