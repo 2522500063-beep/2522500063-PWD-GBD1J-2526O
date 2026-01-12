@@ -51,7 +51,7 @@
     <tr>
       <td><?= $i++ ?></td>
       <td>
-        <a href="edit.php?nim=<?= (int)$row['nim']; ?>">Edit</a>
+        <a href="edit_biodata.php?nim=<?= (int)$row['nim']; ?>">Edit</a>
         <a onclick="return confirm('Hapus <?= htmlspecialchars($row['nama_lengkap']); ?>?')" href="proses_delete_bio.php?nim=<?= (int)$row['nim']; ?>">Delete</a>
       </td>
       <td><?= $row['nim']; ?></td>

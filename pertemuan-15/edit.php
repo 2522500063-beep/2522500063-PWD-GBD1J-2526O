@@ -104,7 +104,7 @@
             <?= $flash_error; ?>
           </div>
         <?php endif; ?>
-        <form action="proses_update.php" method="POST">
+        <form action="proses.php" method="POST">
 
           <input type="text" name="cid" value="<?= (int)$cid; ?>">
 

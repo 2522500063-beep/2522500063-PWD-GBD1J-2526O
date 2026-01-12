@@ -10,4 +10,5 @@ PRG, dan insert ke tabel biodata mahasiswa</li>
     <li>mengisi kode dan membuat file proses_update_bio.php dan edit_biodata.php</li>
     <li>menambahkan tombol edit dan delete</li>
     <li>menambahkan informasi penghapusan dan menampilkan status sukses atau gagal</li>
+    <li>melakukan validasi, sanitasi, konsep PRG pada form ke tabel</li>
 </ol>

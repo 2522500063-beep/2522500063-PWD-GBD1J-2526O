@@ -1,41 +1,35 @@
 <?php
-  session_start();
-  require __DIR__ . '/koneksi.php';
-  require_once __DIR__ . '/fungsi.php';
+session_start();
+require __DIR__ . '/koneksi.php';
+require_once __DIR__ . '/fungsi.php';
 
-  <form action="proses_update_bio.php"
-  method="POST">
-
-  #cek method form, hanya izinkan POST
-  if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+// Pastikan method POST
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     $_SESSION['flash_error'] = 'Akses tidak valid.';
     redirect_ke('bio_mahasiswa.php');
-  }
+}
 
-  #validasi nim wajib angka dan > 0
-  $cnim = filter_input(INPUT_POST, 'cnim', FILTER_VALIDATE_INT, [
-    'options' => ['min_range' => 1]
-  ]);
+// Ambil dan validasi NIM
+$nim = filter_input(INPUT_POST, 'nim', FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]);
+if (!$nim) {
+    $_SESSION['flash_error'] = 'NIM tidak valid.';
+    redirect_ke('edit_biodata.php?nim='. (int)$nim);
+}
 
-  if (!$cnim) {
-    $_SESSION['flash_error'] = 'NIM Tidak Valid.';
-    redirect_ke('edit_biodata.php?cnim='. (int)$cnim);
-  }
+// Ambil & sanitasi input
+$namalengkap = bersihkan($_POST['txtnimEd'] ?? '');
+ $namalengkap = bersihkan($_POST['txtNmLengkapEd'] ?? '');
+$tempatlahir = bersihkan($_POST['txtT4LhrEd'] ?? '');
+$tanggal_ahir = bersihkan($_POST['txtTglLhrEd'] ?? '');
+$hobi = bersihkan($_POST['txtHobiEd'] ?? '');
+$pasangan = bersihkan($_POST['txtPasanganEd'] ?? '');
+$pekerjaan = bersihkan($_POST['txtkerjaEd'] ?? '');
+$namaorangtua = bersihkan($_POST['txtNmOrtuEd'] ?? '');
+$namakakak = bersihkan($_POST['txtNmKakakEd'] ?? '');
+$namaadek = bersihkan($_POST['txtNmAdekEd'] ?? '');
 
-  #ambil dan bersihkan (sanitasi) nilai dari form
-  $namalengkap = bersihkan($_POST['namalengkap']);
-$tempatlahir = bersihkan($_POST['tempatlahir']);
-$tanggallahir = bersihkan($_POST['tanggallahir']);
-$hobi = bersihkan($_POST['hobi']);
-$pasangan = bersihkan($_POST['pasangan']);
-$pekerjaan = bersihkan($_POST['pekerjaan']);
-$namaortu = bersihkan($_POST['namaortu']);
-$namakakak = bersihkan($_POST['namakakak']);
-$namaadek = bersihkan($_POST['namaadek']);
-  
-
-  #Validasi sederhana
-  $errors = []; #ini array untuk menampung semua error yang ada
+// Validasi sederhana
+$errors = []; #ini array untuk menampung semua error yang ada
 
  if ($nim === '') {
   $errors[] = 'NIM wajib diisi.';
@@ -69,7 +63,7 @@ if ($pekerjaan === '') {
   $errors[] = 'pekerjaan wajib diisi.';
 }
 
-if ($namaortu === '') {
+if ($namorangtua === '') {
   $errors[] = 'nama orang tua wajib diisi.';
 }
 
@@ -81,98 +75,60 @@ if ($namaadek === '') {
   $errors[] = 'nama adek wajib diisi.';
 }
 
-  /*
-  kondisi di bawah ini hanya dikerjakan jika ada error, 
-  simpan nilai lama dan pesan error, lalu redirect (konsep PRG)
-  */
-  if (!empty($errors)) {
-    $_SESSION['old'] = [
-       'nim'  => $nim,
-    'namalengkap' => $namalengkap,
-    'tempatlahir' => $tempatlahir,
-    'tanggallahir' => $tanggallahir,
+if (!empty($errors)) {
+  $_SESSION['old'] = [
+     'nim'  => $nim,
+    'nama_lengkap' => $namalengkap,
+    'tempat_lahir' => $tempatlahir,
+    'tanggal_lahir' => $tanggallahir,
     'hobi' => $hobi,
     'pasangan' => $pasangan,
     'pekerjaan' => $pekerjaan,
-    'namaoratu' => $namaortu,
-    'namakakak' => $namakakak,
-    'namaadek' => $namaadek,
+    'nama_orang_tua' => $namaorangtua,
+    'nama_kakak' => $namakakak,
+    'nama_adek' => $namaadek,
   ];
 
-    $_SESSION['flash_error'] = implode('<br>', $errors);
-    redirect_ke('edit_biodata.php?cnim='. (int)$cnim);
+$_SESSION['flash_error'] = implode('<br>', $errors);
+    redirect_ke('edit_biodata.php?nim='. (int)$nim);
   }
 
-  /*
-    Prepared statement untuk anti SQL injection.
-    menyiapkan query UPDATE dengan prepared statement 
-    (WAJIB WHERE cid = ?)
-  */
-  $stmt = mysqli_prepare($conn,"
-UPDATE tbl_mahasiswa SET
-  cnamalengkap=?,
-  ctempatlahir=?,
-  ctanggallahir=?,
-  chobi=?,
-  cpasangan=?,
-  pekerjaan=?,
-  cnamaortu=?,
-  cnamakakak=?,
-  cnamaadek=?
-WHERE cnim=?
-");
-  if (!$stmt) {
+// Prepared statement update
+$stmt = mysqli_prepare($conn, "UPDATE tbl_mahasiswa 
+                               SET nama_lengkap=?, tempat_lahir=?, tanggal_lahir=?, hobi=?, pasangan=?, pekerjaan=?, nama_orang_tua=?, nama_kakak=?, nama_adek=?
+                               WHERE nim=?");
+
+    if (!$stmt) {
     #jika gagal prepare, kirim pesan error (tanpa detail sensitif)
     $_SESSION['flash_error'] = 'Terjadi kesalahan sistem (prepare gagal).';
-    redirect_ke('edit_biodata.php?cnim='. (int)$cnim);
+    redirect_ke('edit_biodata.php?nim='. (int)$nim);
   }
 
-  #bind parameter dan eksekusi (s = string, i = integer)
-  mysqli_stmt_bind_param(
-    $stmt,
-     "sssssssssi", 
-    $namalengkap,
-    $tempatlahir, 
-    $tanggallahir, 
-    $hobi, 
-    $pasangan, 
-    $pekerjaan, 
-    $namaortu, 
-    $namakakak, 
-    $namaadek,
-    $cnim
-    );
+mysqli_stmt_bind_param($stmt, "sssssssssi",
+    $namalengkap, $tempatlahir, $tanggallahir, $hobi, $pasangan, $pekerjaan, $namaorangtua, $namakakak, $namaadek, $nim
+);
 
-  if (mysqli_stmt_execute($stmt)) { #jika berhasil, kosongkan old value
+if (mysqli_stmt_execute($stmt)) {
     unset($_SESSION['old']);
 
-    header("Location: bio_mahasiswa.php");
-exit;
-    /*
-      Redirect balik ke read.php dan tampilkan info sukses.
-    */
     $_SESSION['flash_sukses'] = 'Terima kasih, data Anda sudah diperbaharui.';
     redirect_ke('bio_mahasiswa.php'); #pola PRG: kembali ke data dan exit()
   } else { #jika gagal, simpan kembali old value dan tampilkan error umum
     $_SESSION['old'] = [
-      'nim'  => $nim,
-    'nama lengkap' => $namalengkap,
-    'tempat lahir' => $tempatlahir,
-    'tanggal lahir' => $tanggallahir,
+     'nim'  => $nim,
+    'nama_lengkap' => $namalengkap,
+    'tempat_lahir' => $tempatlahir,
+    'tanggal_lahir' => $tanggallahir,
     'hobi' => $hobi,
     'pasangan' => $pasangan,
     'pekerjaan' => $pekerjaan,
-    'nama orang tua' => $namaortu,
-    'nama kakak' => $namakakak,
-    'nama adek' => $namaadek,
-  ];
+    'nama_orang_tua' => $namaorangtua,
+    'nama_kakak' => $namakakak,
+    'nama_adek' => $namaadek,
+    ];
+
     $_SESSION['flash_error'] = 'Data gagal diperbaharui. Silakan coba lagi.';
-    redirect_ke('edit_biodata.php?cnim='. (int)$cnim);
+    redirect_ke('edit_biodata.php?nim='. (int)$nim);
   }
-  #tutup statement
-  mysqli_stmt_close($stmt);
 
-  redirect_ke('edit_biodata.php?cnim='. (int)$cnim);
-
-
-
+mysqli_stmt_close($stmt);
