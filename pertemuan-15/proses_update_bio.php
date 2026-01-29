@@ -17,16 +17,16 @@ if (!$nim) {
 }
 
 // Ambil & sanitasi input
-$namalengkap = bersihkan($_POST['txtnimEd'] ?? '');
- $namalengkap = bersihkan($_POST['txtNmLengkapEd'] ?? '');
-$tempatlahir = bersihkan($_POST['txtT4LhrEd'] ?? '');
-$tanggal_ahir = bersihkan($_POST['txtTglLhrEd'] ?? '');
-$hobi = bersihkan($_POST['txtHobiEd'] ?? '');
-$pasangan = bersihkan($_POST['txtPasanganEd'] ?? '');
-$pekerjaan = bersihkan($_POST['txtkerjaEd'] ?? '');
-$namaorangtua = bersihkan($_POST['txtNmOrtuEd'] ?? '');
-$namakakak = bersihkan($_POST['txtNmKakakEd'] ?? '');
-$namaadek = bersihkan($_POST['txtNmAdekEd'] ?? '');
+$nim = bersihkan($_POST['txtNim'] ?? '');
+ $namalengkap = bersihkan($_POST['txtNmLengkap'] ?? '');
+$tempatlahir = bersihkan($_POST['txtT4Lhr'] ?? '');
+$tanggallahir = bersihkan($_POST['txtTglLhr'] ?? '');
+$hobi = bersihkan($_POST['txtHobi'] ?? '');
+$pasangan = bersihkan($_POST['txtPasangan'] ?? '');
+$pekerjaan = bersihkan($_POST['txtkerja'] ?? '');
+$namaorangtua = bersihkan($_POST['txtNmOrtu'] ?? '');
+$namakakak = bersihkan($_POST['txtNmKakak'] ?? '');
+$namaadik = bersihkan($_POST['txtNmAdik'] ?? '');
 
 // Validasi sederhana
 $errors = []; #ini array untuk menampung semua error yang ada
@@ -71,8 +71,8 @@ if ($namakakak === '') {
   $errors[] = 'nama kakak wajib diisi.';
 }
 
-if ($namaadek === '') {
-  $errors[] = 'nama adek wajib diisi.';
+if ($namaadik === '') {
+  $errors[] = 'nama adik wajib diisi.';
 }
 
 if (!empty($errors)) {
@@ -86,7 +86,7 @@ if (!empty($errors)) {
     'pekerjaan' => $pekerjaan,
     'nama_orang_tua' => $namaorangtua,
     'nama_kakak' => $namakakak,
-    'nama_adek' => $namaadek,
+    'nama_adik' => $namaadik,
   ];
 
 $_SESSION['flash_error'] = implode('<br>', $errors);
@@ -95,7 +95,7 @@ $_SESSION['flash_error'] = implode('<br>', $errors);
 
 // Prepared statement update
 $stmt = mysqli_prepare($conn, "UPDATE tbl_mahasiswa 
-                               SET nama_lengkap=?, tempat_lahir=?, tanggal_lahir=?, hobi=?, pasangan=?, pekerjaan=?, nama_orang_tua=?, nama_kakak=?, nama_adek=?
+                               SET nama_lengkap=?, tempat_lahir=?, tanggal_lahir=?, hobi=?, pasangan=?, pekerjaan=?, nama_orang_tua=?, nama_kakak=?, nama_adik=?
                                WHERE nim=?");
 
     if (!$stmt) {
@@ -104,8 +104,17 @@ $stmt = mysqli_prepare($conn, "UPDATE tbl_mahasiswa
     redirect_ke('edit_biodata.php?nim='. (int)$nim);
   }
 
-mysqli_stmt_bind_param($stmt, "sssssssssi",
-    $namalengkap, $tempatlahir, $tanggallahir, $hobi, $pasangan, $pekerjaan, $namaorangtua, $namakakak, $namaadek, $nim
+mysqli_stmt_bind_param($stmt, "isssssssss",
+    $namalengkap, 
+    $tempatlahir, 
+    $tanggallahir, 
+    $hobi, 
+    $pasangan, 
+    $pekerjaan, 
+    $namaorangtua, 
+    $namakakak, 
+    $namaadik, 
+    $nim
 );
 
 if (mysqli_stmt_execute($stmt)) {
@@ -124,7 +133,7 @@ if (mysqli_stmt_execute($stmt)) {
     'pekerjaan' => $pekerjaan,
     'nama_orang_tua' => $namaorangtua,
     'nama_kakak' => $namakakak,
-    'nama_adek' => $namaadek,
+    'nama_adik' => $namaadik,
     ];
 
     $_SESSION['flash_error'] = 'Data gagal diperbaharui. Silakan coba lagi.';
@@ -132,3 +141,5 @@ if (mysqli_stmt_execute($stmt)) {
   }
 
 mysqli_stmt_close($stmt);
+
+ redirect_ke('edit_biodata.php?nim='. (int)$nim);

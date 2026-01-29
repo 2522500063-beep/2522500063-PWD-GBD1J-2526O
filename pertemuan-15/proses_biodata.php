@@ -5,21 +5,20 @@ require_once __DIR__ . '/fungsi.php';
 
 #cek method form, hanya izinkan POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-  $_SESSION['flash_error'] = 'Akses tidak valid.';
-  redirect_ke('index.php#biodata');
+ die('Akses tidak valid');
 }
 
 #ambil dan bersihkan nilai dari form
-$namalengkap = bersihkan($_POST['txtnimEd'] ?? '');
- $namalengkap = bersihkan($_POST['txtNmLengkapEd'] ?? '');
-$tempatlahir = bersihkan($_POST['txtT4LhrEd' ?? '']);
-$tanggal_ahir = bersihkan($_POST['txtTglLhrEd' ?? '']);
-$hobi = bersihkan($_POST['txtHobiEd'] ?? '');
-$pasangan = bersihkan($_POST['txtPasanganEd'] ?? '');
-$pekerjaan = bersihkan($_POST['txtkerjaEd']) ?? '';
-$namaorangtua = bersihkan($_POST['txtNmOrtuEd'] ?? '');
-$namakakak = bersihkan($_POST['txtNmKakakEd'] ?? '');
-$namaadek = bersihkan($_POST['txtNmAdekEd'] ?? '');
+$nim = bersihkan($_POST['txtNim'] ?? '');
+ $namalengkap = bersihkan($_POST['txtNmLengkap'] ?? '');
+$tempatlahir = bersihkan($_POST['txtT4Lhr' ?? '']);
+$tanggallahir = bersihkan($_POST['txtTglLhr' ?? '']);
+$hobi = bersihkan($_POST['txtHobi'] ?? '');
+$pasangan = bersihkan($_POST['txtPasangan'] ?? '');
+$pekerjaan = bersihkan($_POST['txtkerja']) ?? '';
+$namaorangtua = bersihkan($_POST['txtNmOrtu'] ?? '');
+$namakakak = bersihkan($_POST['txtNmKakak'] ?? '');
+$namaadik = bersihkan($_POST['txtNmAdik'] ?? '');
 
 #Validasi sederhana
 $errors = []; #ini array untuk menampung semua error yang ada
@@ -64,8 +63,8 @@ if ($namakakak === '') {
   $errors[] = 'nama kakak wajib diisi.';
 }
 
-if ($namaadek === '') {
-  $errors[] = 'nama adek wajib diisi.';
+if ($namaadik === '') {
+  $errors[] = 'nama adik wajib diisi.';
 }
 
 /*
@@ -83,7 +82,7 @@ if (!empty($errors)) {
     'pekerjaan' => $pekerjaan,
     'nama_orang_tua' => $namaorangtua,
     'nama_kakak' => $namakakak,
-    'nama_adek' => $namaadek,
+    'nama_adik' => $namaadik,
   ];
 
 
@@ -92,7 +91,7 @@ if (!empty($errors)) {
 }
 
 #menyiapkan query INSERT dengan prepared statement
-$sql = "INSERT INTO tbl_mahasiswa (nim, nama_lengkap, tempat_lahir, tanggal_lahir, hobi, pasangan, pekerjaan, nama_orang_tua, nama_kakak, nama_adek) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$sql = "INSERT INTO tbl_mahasiswa (nim, nama_lengkap, tempat_lahir, tanggal_lahir, hobi, pasangan, pekerjaan, nama_orang_tua, nama_kakak, nama_adik) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 $stmt = mysqli_prepare($conn, $sql);
 
 if (!$stmt) {
@@ -101,7 +100,7 @@ if (!$stmt) {
   redirect_ke('index.php#biodata');
 }
 #bind parameter dan eksekusi (s = string)
-mysqli_stmt_bind_param($stmt, "sssssssss", $namalengkap, $tempatlahir, $tanggallahir, $hobi, $pasangan, $pekerjaan, $namaortu, $namakakak, $namaadek, $nim);
+mysqli_stmt_bind_param($stmt, "isssssssss", $namalengkap, $tempatlahir, $tanggallahir, $hobi, $pasangan, $pekerjaan, $namaortu, $namakakak, $namaadik, $nim);
 
 if (mysqli_stmt_execute($stmt)) { #jika berhasil, kosongkan old value, beri pesan sukses
   unset($_SESSION['old']);
@@ -118,7 +117,7 @@ if (mysqli_stmt_execute($stmt)) { #jika berhasil, kosongkan old value, beri pesa
     'pekerjaan' => $pekerjaan,
     'nama_orang_tua' => $namaorangtua,
     'nama_kakak' => $namakakak,
-    'nama_adek' => $namaadek,
+    'nama_adik' => $namaadik,
   ];
   $_SESSION['flash_error'] = 'Data gagal disimpan. Silakan coba lagi.';
   redirect_ke('index.php#biodata');
@@ -126,20 +125,6 @@ if (mysqli_stmt_execute($stmt)) { #jika berhasil, kosongkan old value, beri pesa
 #tutup statement
 mysqli_stmt_close($stmt);
 
-$arrBiodata = [
-  "nim" => $_POST["txtNim"] ?? "",
-  "nama" => $_POST["txtNmLengkap"] ?? "",
-  "tempat" => $_POST["txtT4Lhr"] ?? "",
-  "tanggal" => $_POST["txtTglLhr"] ?? "",
-  "hobi" => $_POST["txtHobi"] ?? "",
-  "pasangan" => $_POST["txtPasangan"] ?? "",
-  "pekerjaan" => $_POST["txtKerja"] ?? "",
-  "ortu" => $_POST["txtNmOrtu"] ?? "",
-  "kakak" => $_POST["txtNmKakak"] ?? "",
-  "adik" => $_POST["txtNmAdik"] ?? ""
-];
-$_SESSION["biodata"] = $arrBiodata;
 
-header("location: index.php#about");
 
 

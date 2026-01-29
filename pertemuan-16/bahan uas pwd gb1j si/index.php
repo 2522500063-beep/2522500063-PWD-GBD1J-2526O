@@ -38,48 +38,48 @@ require_once __DIR__ . '/fungsi.php';
       <p>Ini contoh paragraf HTML.</p>
     </section>
 
-    <section id="biodata">
-      <h2>Biodata Sederhana Mahasiswa</h2>
-      <form action="proses.php" method="POST">
+    <section id="anggota">
+      <h2>Data Anggota</h2>
+      <form action="proses_anggota.php" method="POST">
 
-        <label for="txtNim"><span>NIM:</span>
-          <input type="text" id="txtNim" name="txtNim" placeholder="Masukkan NIM" required>
+        <label for="txtNoAng"><span>Nomor Anggota:</span>
+          <input type="text" id="txtNoAng" name="txtNoAng" placeholder="Masukkan Nomor Anggota" required>
         </label>
 
-        <label for="txtNmLengkap"><span>Nama Lengkap:</span>
-          <input type="text" id="txtNmLengkap" name="txtNmLengkap" placeholder="Masukkan Nama Lengkap" required>
+        <label for="txtNmAng"><span>Nama Anggota:</span>
+          <input type="text" id="txtNmAng" name="txtNmAng" placeholder="Masukkan Nama Anggota" required>
         </label>
 
-        <label for="txtT4Lhr"><span>Tempat Lahir:</span>
-          <input type="text" id="txtT4Lhr" name="txtT4Lhr" placeholder="Masukkan Tempat Lahir" required>
+        <label for="txtJabAng"><span>Jabatan Anggota:</span>
+          <input type="text" id="txtJabAng" name="txtJabAng" placeholder="Masukkan Jabatan Anggota" required>
         </label>
 
-        <label for="txtTglLhr"><span>Tanggal Lahir:</span>
-          <input type="text" id="txtTglLhr" name="txtTglLhr" placeholder="Masukkan Tanggal Lahir" required>
+        <label for="txtTglJadi"><span>Tanggal Jadi Anggota:</span>
+          <input type="text" id="txtTglJadi" name="txtTglJadi" placeholder="Masukkan Tanggal Jadi Anggota" required>
         </label>
 
-        <label for="txtHobi"><span>Hobi:</span>
-          <input type="text" id="txtHobi" name="txtHobi" placeholder="Masukkan Hobi" required>
+        <label for="txtSkill"><span>Kemampuan Anggota:</span>
+          <input type="text" id="txtSkill" name="txtSkill" placeholder="Masukkan Kemampuan Anggota" required>
         </label>
 
-        <label for="txtPasangan"><span>Pasangan:</span>
-          <input type="text" id="txtPasangan" name="txtPasangan" placeholder="Masukkan Pasangan" required>
+        <label for="txtGaji"><span>Gaji Anggota:</span>
+          <input type="text" id="txtGaji" name="txtGaji" placeholder="Masukkan Gaji Anggota" required>
         </label>
 
-        <label for="txtKerja"><span>Pekerjaan:</span>
-          <input type="text" id="txtKerja" name="txtKerja" placeholder="Masukkan Pekerjaan" required>
+        <label for="txtNoWA"><span>Nomor WA:</span>
+          <input type="text" id="txtNoWA" name="txtNoWA" placeholder="Masukkan Nomor WA" required>
         </label>
 
-        <label for="txtNmOrtu"><span>Nama Orang Tua:</span>
-          <input type="text" id="txtNmOrtu" name="txtNmOrtu" placeholder="Masukkan Nama Orang Tua" required>
+        <label for="txBatalion"><span>Batalion Anggota:</span>
+          <input type="text" id="txBatalion" name="txBatalion" placeholder="Masukkan Batalion Anggota" required>
         </label>
 
-        <label for="txtNmKakak"><span>Nama Kakak:</span>
-          <input type="text" id="txtNmKakak" name="txtNmKakak" placeholder="Masukkan Nama Kakak" required>
+        <label for="txtBB"><span>Berat Badan:</span>
+          <input type="text" id="txtBB" name="txtBB" placeholder="Masukkan Berat Badan" required>
         </label>
 
-        <label for="txtNmAdik"><span>Nama Adik:</span>
-          <input type="text" id="txtNmAdik" name="txtNmAdik" placeholder="Masukkan Nama Adik" required>
+        <label for="txtTB"><span>Tinggi Badan:</span>
+          <input type="text" id="txtTB" name="txtTB" placeholder="Masukkan Tinggi Badan" required>
         </label>
 
         <button type="submit">Kirim</button>
@@ -87,28 +87,26 @@ require_once __DIR__ . '/fungsi.php';
       </form>
     </section>
 
-        
-
     <?php
-    $biodata = $_SESSION["biodata"] ?? [];
+    $anggota = $_SESSION["anggota"] ?? [];
 
     $fieldConfig = [
-      "nim" => ["label" => "NIM:", "suffix" => ""],
-      "nama" => ["label" => "Nama Lengkap:", "suffix" => " &#128526;"],
-      "tempat" => ["label" => "Tempat Lahir:", "suffix" => ""],
-      "tanggal" => ["label" => "Tanggal Lahir:", "suffix" => ""],
-      "hobi" => ["label" => "Hobi:", "suffix" => " &#127926;"],
-      "pasangan" => ["label" => "Pasangan:", "suffix" => " &hearts;"],
-      "pekerjaan" => ["label" => "Pekerjaan:", "suffix" => " &copy; 2025"],
-      "ortu" => ["label" => "Nama Orang Tua:", "suffix" => ""],
-      "kakak" => ["label" => "Nama Kakak:", "suffix" => ""],
-      "adik" => ["label" => "Nama Adik:", "suffix" => ""],
+      "noang" => ["label" => "Nomor Anggota:", "suffix" => ""],
+      "nama" => ["label" => "Nama Anggota:", "suffix" => " &#128526;"],
+      "jabatan" => ["label" => "Jabatan Anggota:", "suffix" => ""],
+      "tanggal" => ["label" => "Tanggal Jadi Anggota:", "suffix" => ""],
+      "skill" => ["label" => "Kemampuan Anggota:", "suffix" => " &#127926;"],
+      "gaji" => ["label" => "Gaji Anggota:", "suffix" => " &hearts;"],
+      "nowa" => ["label" => "Nomor WA:", "suffix" => " &copy; 2025"],
+      "batalion" => ["label" => "Batalion Anggota:", "suffix" => ""],
+      "bb" => ["label" => "Berat Badan:", "suffix" => ""],
+      "tb" => ["label" => "Tinggi Badan:", "suffix" => ""],
     ];
     ?>
 
     <section id="about">
       <h2>Tentang Saya</h2>
-      <?= tampilkanBiodata($fieldConfig, $biodata) ?>
+      <?= tampilkanData($fieldConfig, $anggota) ?>
     </section>
 
     <?php
